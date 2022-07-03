@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Produk;
+use App\Models\Stok;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -55,7 +56,9 @@ class ProdukController extends Controller
         ]);
 
         $image = $request->file('gambar');
-        $image->storeAs('public/image', $image->hashName());
+        $name = time().'.'.$image->getClientOriginalExtension();
+        $image->move(public_path('image'),$name);
+
         $data = Produk::create([
         'gambar' => $image->hashName(),
         'rasa' => $request->rasa,
@@ -130,7 +133,8 @@ class ProdukController extends Controller
 
             //upload new image
             $image = $request->file('gambar');
-            $image->storeAs('public/image', $image->hashName());
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('image'),$name);
 
             $data->update([
                 'gambar' => $image->hashName(),
@@ -164,5 +168,10 @@ class ProdukController extends Controller
         $data = Produk::findOrFail($id);
         $data->delete();
         return back()->with('success', 'Data sudah di hapus');
+    }
+    public function detail($id){
+        $data = Produk::find($id);
+        $data1 = Stok::find($id);
+        return view('user.detail',compact('data','data1'));
     }
 }

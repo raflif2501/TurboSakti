@@ -82,8 +82,8 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index-2.html">home</a></li>
-                            <li>Product details</li>
+                            <li><a href="{{ route('home') }}">home</a></li>
+                            <li>Detail Produk</li>
                         </ul>
                     </div>
                 </div>
@@ -99,10 +99,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product-details-tab">
                         <div id="img-1" class="zoomWrapper single-zoom">
-                            <a href="#">
-                                <img id="zoom1" src="assets/img/product/details-1.jpg"
-                                    data-zoom-image="assets/img/product/details-1.jpg" alt="big-1">
-                            </a>
+                            <img src="{{ url('storage/image/' . $data->gambar) }}" width="100" height="100">
                         </div>
                     </div>
                 </div>
@@ -110,42 +107,35 @@
             <div class="col-lg-6 col-md-6">
                 <div class="product_d_right">
                     <form action="#">
-                        <h1>Fancy Chair for astron floor</h1>
+                        <h1>{{ $data->rasa }}</h1>
                         <div class="price_box">
-                            <span class="current_price">$70.00</span>
-                            <span class="old_price">$80.00</span>
-
+                            <span class="current_price">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z" />
+                                    <path
+                                        d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z" />
+                                    <path
+                                        d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z" />
+                                    <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z" />
+                                </svg>
+                                {{ $data->harga_jual }}</span>
                         </div>
                         <div class="product_desc">
                             <ul>
-                                <li>In Stock</li>
-                                <li>Free delivery available*</li>
-                                <li>Sale 30% Off Use Code : 'Drophut'</li>
+                                <li><span>Stok </span>{{ $data1->jumlah }}</li>
+                                <li><span>Tanggal Produksi </span>{{ $data1->tgl_produksi }}</li>
+                                <li><span>Harga Per ball </span>{{ $data1->harga_perbal }}</li>
                             </ul>
-                            <p>eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus
-                                eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non
-                                neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et
-                                placerat vestibulum, metus nisi posuere nisl, in </p>
                         </div>
-                        <div class="product_timing">
-                            <div data-countdown="2023/12/15"></div>
+                        <div class="product_variant quantity">
+                            <label>Jumlah</label>
+                            <input min="1" max="100" value="1" type="number">
+                            <button class="button" type="submit">add to cart</button>
+
                         </div>
                     </form>
-                    <div class="priduct_social">
-                        <ul>
-                            <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i>
-                                    Like</a></li>
-                            <li><a class="twitter" href="#" title="twitter"><i class="fa fa-twitter"></i>
-                                    tweet</a></li>
-                            <li><a class="pinterest" href="#" title="pinterest"><i
-                                        class="fa fa-pinterest"></i> save</a></li>
-                            <li><a class="google-plus" href="#" title="google +"><i
-                                        class="fa fa-google-plus"></i> share</a></li>
-                            <li><a class="linkedin" href="#" title="linkedin"><i class="fa fa-linkedin"></i>
-                                    linked</a></li>
-                        </ul>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -160,8 +150,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="widgets_container contact_us">
                             <div class="footer_logo">
-                                <a href="#"><img src="{{ asset('user') }}/img/logo/logo.png"
-                                        alt=""></a>
+                                <a href="#"><img src="{{ asset('img') }}/typo_p.png" alt=""></a>
                             </div>
                             <div class="footer_contact">
                                 <p>Toko Turbo Sakti Manding adalah usaha pribadi yang bergerak di penjualan olahan dari

@@ -88,7 +88,7 @@
                 @foreach ($data as $p)
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
                         <div class="single-tranding">
-                            <a href="{{ route('produk.show', $p->id) }}">
+                            <a href="/detail/{{ $p->id }}">
                                 <div class="tranding-pro-img">
                                     <img src="{{ url('storage/image/' . $p->gambar) }}" width="100" height="100">
                                 </div>
@@ -130,8 +130,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="widgets_container contact_us">
                             <div class="footer_logo">
-                                <a href="#"><img src="{{ asset('user') }}/img/logo/logo.png"
-                                        alt=""></a>
+                                <a href="#"><img src="{{ asset('img') }}/typo_p.png" alt=""></a>
                             </div>
                             <div class="footer_contact">
                                 <p>Toko Turbo Sakti Manding adalah usaha pribadi yang bergerak di penjualan olahan dari

@@ -13,4 +13,8 @@ class Pelanggan extends Model
 
     protected $primarykey ='id';
     protected $fillable = ['id', 'nama', 'alamat', 'no_tlp'];
+    public function user()
+    {
+        return $this->hasOne('App\Models\User', 'user');
+    }
 }

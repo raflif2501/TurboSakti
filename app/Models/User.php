@@ -24,7 +24,10 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
+    public function pelanggan()
+    {
+        return $this->belongsTo('App\Models\Pelanggan', 'id_pelanggan');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

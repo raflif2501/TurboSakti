@@ -25,3 +25,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('produk', ProdukController::class);
 Route::resource('stok', StokController::class);
 Route::resource('pelanggan', PelangganController::class);
+Route::get('/detail/{id}', [ProdukController::class, 'detail'])->name('detail');
