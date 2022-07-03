@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\StokController;
+use App\Http\Controllers\PelangganController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,3 +24,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('produk', Produkcontroller::class);
 Route::resource('stok', Stokcontroller::class);
+Route::resource('pelanggan', PelangganController::class);
