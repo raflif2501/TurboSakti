@@ -1,3 +1,8 @@
+@section('css')
+
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+
+@endsection
 @extends('layouts.app')
 
 @section('content')

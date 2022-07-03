@@ -45,7 +45,7 @@ class ProdukController extends Controller
     {
         $produk = Produk::count();
         $user = User::count();
-        return view('produk.create', compact('data', 'produk', 'user'));
+        return view('produk.create', compact('produk', 'user'));
     }
     public function store(Request $request)
     {
@@ -60,7 +60,7 @@ class ProdukController extends Controller
         $image->move(public_path('image'),$name);
 
         $data = Produk::create([
-        'gambar' => $image->hashName(),
+        'gambar' => $name,
         'rasa' => $request->rasa,
         'harga_jual' => $request->harga_jual
         ]);
@@ -116,9 +116,8 @@ class ProdukController extends Controller
             'harga_jual' => 'required',
             'gambar' => 'required'
         ]);
-            // dd($data);
-            //get data Blog by ID
-            $data = Produk::findOrFail($id);
+
+        $data = Produk::findOrFail($id);
 
         if($request->file('gambar') == "") {
             $data->update([
@@ -137,9 +136,9 @@ class ProdukController extends Controller
             $image->move(public_path('image'),$name);
 
             $data->update([
-                'gambar' => $image->hashName(),
-                'rasa' => $request->rasa,
-                'harga_jual' => $request->harga_jual
+                'gambar'        => $image->hashName(),
+                'rasa'          => $request->rasa,
+                'harga_jual'    => $request->harga_jual
             ]);
         }
 

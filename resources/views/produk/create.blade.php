@@ -1,3 +1,8 @@
+@section('css')
+
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+
+@endsection
 @extends('layouts.app')
 
 @section('content')
@@ -19,11 +24,11 @@
                                 </ul>
                             </div><br />
                         @endif
-                        <form method="POST" action="{{ route('produk.index') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('produk.index') }}">
                             <div class="form-group">
                                 @csrf
                                 <label>Gambar :</label>
-                                <input type="file" name="gambar" class="form-control mb-3" placeholder="image">
+                                <input type="file" name="gambar" class="form-control mb-3">
                                 <label>Rasa :</label>
                                 <input type="text" class="form-control mb-3" name="rasa">
                                 <label>Harga Jual :</label>
