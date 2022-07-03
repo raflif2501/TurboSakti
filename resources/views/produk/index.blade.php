@@ -1,3 +1,8 @@
+@section('css')
+
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+
+@endsection
 @extends('layouts.app')
 
 @section('content')
@@ -25,7 +30,7 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>
-                                    <img src="{{ url('storage/image/' . $p->gambar) }}" width="100" height="100">
+                                    <img src="{{ asset('image/'.$p->gambar) }}" width="100" height="100">
                                 </td>
                                 <td>{{ $p->rasa }}</td>
                                 <td>{{ $p->harga_jual }}</td>
@@ -47,7 +52,6 @@
             </div>
         </div>
     </div>
-    @include('produk.scriptDelete')
 @endsection
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
