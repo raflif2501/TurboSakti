@@ -90,7 +90,7 @@
                         <div class="single-tranding">
                             <a href="/detail/{{ $p->id }}">
                                 <div class="tranding-pro-img">
-                                    <img src="{{ url('storage/image/' . $p->gambar) }}" width="100" height="100">
+                                    <img src="{{ url('image/' . $p->gambar) }}" width="100" height="100">
                                 </div>
                                 <div class="tranding-pro-title">
                                     <h3>{{ $p->rasa }}</h3>

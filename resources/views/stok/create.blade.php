@@ -22,6 +22,12 @@
                         <form method="POST" action="{{ route('stok.index') }}" enctype="multipart/form-data">
                             <div class="form-group">
                                 @csrf
+                                <label>Rasa</label>
+                                <input type="text" class="form-control mb-3" name="rasa">
+                                <label>Harga</label>
+                                <input type="text" class="form-control mb-3" name="harga_jual">
+                                <label>Gambar</label>
+                                <input type="file" class="form-control mb-3" name="gambar">
                                 <label>Jumlah</label>
                                 <input type="text" class="form-control mb-3" name="jumlah">
                                 <label>Tanggal Produksi</label>

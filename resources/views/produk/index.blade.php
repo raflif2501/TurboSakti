@@ -1,7 +1,5 @@
 @section('css')
-
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 @endsection
 @extends('layouts.app')
 
@@ -19,6 +17,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>ID Produk</th>
                             <th>Gambar</th>
                             <th>Rasa </th>
                             <th>Harga Jual</th>
@@ -29,8 +28,9 @@
                         @foreach ($data as $p)
                             <tr>
                                 <td>{{ $no++ }}</td>
+                                <td>{{ $p->id }}</td>
                                 <td>
-                                    <img src="{{ asset('image/'.$p->gambar) }}" width="100" height="100">
+                                    <img src="{{ asset('image/' . $p->gambar) }}" width="100" height="100">
                                 </td>
                                 <td>{{ $p->rasa }}</td>
                                 <td>{{ $p->harga_jual }}</td>

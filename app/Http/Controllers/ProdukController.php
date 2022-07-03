@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use Storage;
+use DB;
 
 class ProdukController extends Controller
 {
@@ -52,7 +53,11 @@ class ProdukController extends Controller
         $this->validate($request, [
             'rasa' => 'required',
             'harga_jual' => 'required',
-            'gambar' => 'required'
+            'gambar' => 'required',
+            'jumlah' => 'required',
+            'tgl_produksi' => 'required',
+            'harga_perbal' => 'required',
+            'id_produk' => 'required'
         ]);
 
         $image = $request->file('gambar');
@@ -60,12 +65,17 @@ class ProdukController extends Controller
         $image->move(public_path('image'),$name);
 
         $data = Produk::create([
-        'gambar' => $name,
-        'rasa' => $request->rasa,
-        'harga_jual' => $request->harga_jual
+            'gambar' => $name,
+            'rasa' => $request->rasa,
+            'harga_jual' => $request->harga_jual,
         ]);
-
-        if($data){
+        $data1 = Stok::create([
+        'jumlah' => $request->jumlah,
+        'tgl_produksi' => $request->tgl_produksi,
+        'harga_perbal' => $request->harga_perbal,
+        'id_produk' => $request->id_produk
+        ]);
+        if($data and $data1){
             //redirect dengan pesan sukses
             Alert::success('Success', 'Data Berhasil Ditambahkan');
             return redirect()->route('produk.index');
@@ -169,8 +179,12 @@ class ProdukController extends Controller
         return back()->with('success', 'Data sudah di hapus');
     }
     public function detail($id){
-        $data = Produk::find($id);
-        $data1 = Stok::find($id);
-        return view('user.detail',compact('data','data1'));
+        // $data = Produk::find($id);
+        $data1 = Produk::find($id);
+        $data = DB::table('stoks')
+        ->join('produks', 'produks.id', '=', 'stoks.id_produk')
+        ->get();
+        // var_dump($data);die;
+        return view('user.detail',compact('data1', $data));
     }
 }

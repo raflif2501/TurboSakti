@@ -47,11 +47,12 @@ class StokController extends Controller
     {
         $produk = Produk::count();
         $user = User::count();
-        return view('stok.create', compact('data', 'produk', 'user'));
+        return view('stok.create', compact( 'produk', 'user'));
     }
     public function store(Request $request)
     {
         Stok::create($request->all());
+        Produk::create($request->all());
         Alert::success('Success', 'Stok Berhasil Ditambahkan');
         return redirect()->route('stok.index');
     }

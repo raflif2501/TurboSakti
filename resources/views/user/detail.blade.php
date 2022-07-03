@@ -99,7 +99,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product-details-tab">
                         <div id="img-1" class="zoomWrapper single-zoom">
-                            <img src="{{ url('storage/image/' . $data->gambar) }}" width="100" height="100">
+                            <img src="{{ url('image/' . $data1->gambar) }}" width="100" height="100">
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
             <div class="col-lg-6 col-md-6">
                 <div class="product_d_right">
                     <form action="#">
-                        <h1>{{ $data->rasa }}</h1>
+                        <h1>{{ $data1->rasa }}</h1>
                         <div class="price_box">
                             <span class="current_price">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -120,13 +120,13 @@
                                         d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z" />
                                     <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z" />
                                 </svg>
-                                {{ $data->harga_jual }}</span>
+                                {{ $data1->harga_jual }}</span>
                         </div>
                         <div class="product_desc">
                             <ul>
-                                <li><span>Stok </span>{{ $data1->jumlah }}</li>
-                                <li><span>Tanggal Produksi </span>{{ $data1->tgl_produksi }}</li>
-                                <li><span>Harga Per ball </span>{{ $data1->harga_perbal }}</li>
+                                <li><span>Stok : </span>{{ $data1->jumlah }}</li>
+                                <li><span>Tanggal Produksi : </span>{{ $data1->tgl_produksi }}</li>
+                                <li><span>Harga Per ball : </span>{{ $data1->harga_perbal }}</li>
                             </ul>
                         </div>
                         <div class="product_variant quantity">
