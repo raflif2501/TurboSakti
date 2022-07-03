@@ -10,30 +10,35 @@
                 </a>
             </div>
             <div class="card-body">
-            <table id="datatablesSimple">
+                <table id="datatablesSimple">
                     <thead>
                         <tr>
                             <th>Nama</th>
+                            <th>Email</th>
                             <th>Alamat</th>
                             <th>No. Telp</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($pelanggan as $p)
-                        <tr>
-                            <td>{{ $p->nama }}</td>
-                            <td>{{ $p->alamat }}</td>
-                            <td>{{ $p->no_tlp }}</td>
-                            <td class="text-center">
-                                <form action="{{ route('pelanggan.destroy', $p->id)}}" method="post" style="display:inline">
-                                <a href="{{ route('pelanggan.edit',$p->id)}}" class="btn btn-warning"><i class="fas fa-pencil"></i></a>
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i></button>
-                                @csrf
-                                @method('DELETE')
-                                </form>
-                            </td>
-                        </tr>
+                        @foreach ($data as $p)
+                            <tr>
+                                <td>{{ $p->name }}</td>
+                                <td>{{ $p->email }}</td>
+                                <td>{{ $p->alamat }}</td>
+                                <td>{{ $p->no_tlp }}</td>
+                                <td class="text-center">
+                                    <form action="{{ route('pelanggan.destroy', $p->id) }}" method="post"
+                                        style="display:inline">
+                                        <a href="{{ route('pelanggan.edit', $p->id) }}" class="btn btn-warning"><i
+                                                class="fas fa-pencil"></i></a>
+                                        <button type="submit" class="btn btn-danger"
+                                            onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i></button>
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

@@ -36,7 +36,8 @@ class ProdukController extends Controller
             $user = User::count();
             return view('produk.index', compact('data','produk','user','no'));
         } elseif($auth->hasRole('user')){
-
+            $data = Produk::all();
+            return view('user.index', compact('data'));
         }
     }
     public function create()

@@ -22,6 +22,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('produk', Produkcontroller::class);
-Route::resource('stok', Stokcontroller::class);
+Route::resource('produk', ProdukController::class);
+Route::resource('stok', StokController::class);
 Route::resource('pelanggan', PelangganController::class);

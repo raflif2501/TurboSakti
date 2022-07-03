@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pelanggan;
+use App\Models\User;
+use App\Models\Produk;
+use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
+use DB;
 
 class PelangganController extends Controller
 {
@@ -12,11 +17,27 @@ class PelangganController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
     public function index()
     {
-        $pelanggan = Pelanggan::all();
+        $auth = auth()->user();
         $no = 1;
-        return view('pelanggan.index', compact('pelanggan', 'no'));
+        if($auth->hasRole('admin')){
+            $data = Pelanggan::all();
+            $user = User::count();
+            $produk = Produk::count();
+            $pelanggan = Pelanggan::count();
+            $data = DB::table('pelanggan')
+        ->join('users', 'users.id', '=', 'pelanggan.id_pelanggan')
+        ->get();
+        return view('pelanggan.index', compact('data','produk','user','no','pelanggan',$data));
+        } elseif($auth->hasRole('user')){
+        return view('user.index');
+        }
     }
 
     /**
@@ -26,7 +47,7 @@ class PelangganController extends Controller
      */
     public function create()
     {
-        //
+        return view('pelanggan.create');
     }
 
     /**
@@ -37,7 +58,9 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Pelanggan::create($request->all());
+        Alert::success('Success', 'Pelanggan Berhasil Dibuat');
+        return redirect()->route('pelanggan.index');
     }
 
     /**
@@ -48,7 +71,8 @@ class PelangganController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Produk::find($id);
+        return view('pelanggan.index', compact('data'));
     }
 
     /**
@@ -59,7 +83,10 @@ class PelangganController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Produk::find($id);
+        $produk = Produk::count();
+        $user = User::count();
+        return view('pelanggan.edit', compact('data', 'produk','user'));
     }
 
     /**
@@ -71,7 +98,11 @@ class PelangganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $data = Pelanggan::find($id);
+         $data->update($request->all());
+         $user = User::count();
+         Alert::success('Success', 'Pelanggan Berhasil Dirubah');
+         return redirect()->route('pelanggan.index');
     }
 
     /**
@@ -82,6 +113,8 @@ class PelangganController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Pelanggan::findOrFail($id);
+        $data->delete();
+        return back()->with('success', 'Data pelanggan sudah di hapus');
     }
 }
