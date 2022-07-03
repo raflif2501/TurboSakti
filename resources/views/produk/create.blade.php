@@ -30,7 +30,12 @@
                                 <label>Gambar :</label>
                                 <input type="file" name="gambar" class="form-control mb-3">
                                 <label>Rasa :</label>
-                                <input type="text" class="form-control mb-3" name="rasa">
+                                <select name="rasa" id="rasa" class="form-control mb-3">
+                                    <option value="(160 gram) rasa bawang putih original warna putih">(160 gram) Rasa Bawang Putih Original Warna Putih</option>
+                                    <option value="(130 gram) rasa bawang putih original warna kuning">(130 gram) Rasa Bawang Putih Original Warna Kuning</option>
+                                    <option value="(160 gram) rasa pedas manis warna putih">(160 gram) Rasa Pedas Manis Warna Kuning</option>
+                                    <option value="(130 gram) rasa pedas manis warna merah">(130 gram) Rasa Pedas Manis Warna Putih</option>
+                                </select>
                                 <label>Harga Jual :</label>
                                 <input type="text" class="form-control mb-3"name="harga_jual">
                             </div>
