@@ -87,7 +87,7 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
                             Grafik Keuangan
                         </a>
-                        <a class="nav-link" href="tables.html">
+                        <a class="nav-link" href="{{ route('pelanggan.index')}}">
                             <div class="sb-nav-link-icon"><i class="fas fa-users-between-lines"></i></div>
                             Pelanggan
                         </a>
