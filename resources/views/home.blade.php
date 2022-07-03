@@ -65,60 +65,26 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-                    <div class="single-tranding">
-                        <a href="product-details.html">
-                            <div class="tranding-pro-img">
-                                <img src="{{ asset('user') }}/img/product/tranding-1.jpg" alt="">
-                            </div>
-                            <div class="tranding-pro-title">
-                                <h3>Meyoji Robast Drone</h3>
-                            </div>
-                            <div class="tranding-pro-price">
-                                <div class="price_box">
-                                    <span class="current_price">$70.00</span>
-                                    <span class="old_price">$80.00</span>
+                @foreach ($data as $p)
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                        <div class="single-tranding">
+                            <a href="product-details.html">
+                                <div class="tranding-pro-img">
+                                    <img src="{{ url('storage/image/' . $p->gambar) }}" width="100" height="100">
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-                    <div class="single-tranding">
-                        <a href="product-details.html">
-                            <div class="tranding-pro-img">
-                                <img src="{{ asset('user') }}/img/product/tranding-2.jpg" alt="">
-                            </div>
-                            <div class="tranding-pro-title">
-                                <h3>Ut praesentium earum</h3>
-                            </div>
-                            <div class="tranding-pro-price">
-                                <div class="price_box">
-                                    <span class="current_price">$70.00</span>
-                                    <span class="old_price">$80.00</span>
+                                <div class="tranding-pro-title">
+                                    <h3>{{ $p->rasa }}</h3>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-                    <div class="single-tranding">
-                        <a href="product-details.html">
-                            <div class="tranding-pro-img">
-                                <img src="{{ asset('user') }}/img/product/tranding-3.jpg" alt="">
-                            </div>
-                            <div class="tranding-pro-title">
-                                <h3>Consectetur adipisicing</h3>
-                            </div>
-                            <div class="tranding-pro-price">
-                                <div class="price_box">
-                                    <span class="current_price">$70.00</span>
-                                    <span class="old_price">$80.00</span>
+                                <div class="tranding-pro-price">
+                                    <div class="price_box">
+                                        <span class="current_price">{{ $p->harga_jual }}</span>
+                                        {{-- <span class="old_price">$80.00</span> --}}
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

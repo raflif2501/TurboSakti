@@ -81,7 +81,7 @@ class ProdukController extends Controller
     public function show($id)
     {
         $data = Produk::find($id);
-        return view('produk.index', compact('data'));
+        return view('user.index', compact('data'));
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Produk;
+use App\Models\Stok;
 
 class HomeController extends Controller
 {
@@ -32,7 +33,11 @@ class HomeController extends Controller
             $produk = Produk::count();
             return view('admin.index', compact('user','produk'));
         } elseif($auth->hasRole('user')){
-            return view('user.index');
+            $data = Produk::all();
+            return view('user.index', compact('data'));
+        }else{
+            $data = Produk::all();
+            return view('/', compact('data'));
         }
     }
 }
