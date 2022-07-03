@@ -23,7 +23,12 @@
                             <div class="form-group">
                                 @csrf
                                 <label>Rasa</label>
-                                <input type="text" class="form-control mb-3" name="rasa">
+                                <select name="rasa" id="rasa" class="form-control mb-3">
+                                    <option value="(160 gram) rasa bawang putih original warna putih">(160 gram) Rasa Bawang Putih Original Warna Putih</option>
+                                    <option value="(130 gram) rasa bawang putih original warna kuning">(130 gram) Rasa Bawang Putih Original Warna Kuning</option>
+                                    <option value="(160 gram) rasa pedas manis warna putih">(160 gram) Rasa Pedas Manis Warna Kuning</option>
+                                    <option value="(130 gram) rasa pedas manis warna merah">(130 gram) Rasa Pedas Manis Warna Putih</option>
+                                </select>
                                 <label>Harga</label>
                                 <input type="text" class="form-control mb-3" name="harga_jual">
                                 <label>Gambar</label>
@@ -32,9 +37,9 @@
                                 <input type="text" class="form-control mb-3" name="jumlah">
                                 <label>Tanggal Produksi</label>
                                 <input type="date" class="form-control mb-3" name="tgl_produksi">
-                                <label>Harga Perbal</label>
+                                <label>Harga Per ball</label>
                                 <input type="text" class="form-control mb-3" name="harga_perbal">
-                                <label>ID Produk</label>
+                                <label>Kode Produk</label>
                                 <input type="number" class="form-control mb-3"name="id_produk">
                             </div>
                         </form>

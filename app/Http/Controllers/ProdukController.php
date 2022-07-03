@@ -79,11 +79,9 @@ class ProdukController extends Controller
         'id_produk' => $request->id_produk
         ]);
         if($data and $data1){
-            //redirect dengan pesan sukses
             Alert::success('Success', 'Data Berhasil Ditambahkan');
             return redirect()->route('produk.index');
         }else{
-            //redirect dengan pesan error
             Alert::error('Gagal', 'Data Gagal Ditambahkan');
             return redirect()->route('produk.index');
         }

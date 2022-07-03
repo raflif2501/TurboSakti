@@ -91,6 +91,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-users-between-lines"></i></div>
                             Pelanggan
                         </a>
+                        <a class="nav-link" href="{{ route('pemesanan.index')}}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users-between-lines"></i></div>
+                            Pemesanan
+                        </a>
                         <a class="nav-link" href="tables.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-money-check-dollar"></i></div>
                             Pembayaran
