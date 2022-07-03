@@ -38,9 +38,11 @@ class HomeController extends Controller
             $data = Produk::all();
             $data1 = Stok::all();
             return view('user.index', compact('data','data1'));
-        }else{
-            $data = Produk::all();
-            return view('/', compact('data'));
         }
+    }
+    public function home()
+    {
+        $data = Produk::all();
+        return view('home', compact('data'));
     }
 }

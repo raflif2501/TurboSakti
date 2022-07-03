@@ -16,7 +16,7 @@ use App\Http\Controllers\PelangganController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('auth.login');
 });
 
 Auth::routes();

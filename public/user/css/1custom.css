@@ -264,9 +264,9 @@ img {
 
 
 section.shipping_area {
-    padding: 10px 0;
+    padding: 40px 0;
     color: #fff;
-    background: #f89500;
+    background: #3c65eb;
 }
 
 .label_product span.label_sale {
@@ -280,14 +280,14 @@ section.shipping_area {
 }
 
 .footer_top {
-    background: #f89500;
+    background: #1d1678f0;
     padding: 60px 0 60px;
     color: #fff;
 	border-bottom: 0;
 }
 
 .footer_bottom {
-    background: #f89500;
+    background: #1D1678;
     color: #fff;
 }
 
@@ -354,7 +354,7 @@ section.shipping_area {
 }
 
 .coupon_inner button:hover, .cart_submit button:hover, .checkout_btn a:hover, .order_button button:hover, .checkout_form label.righ_0:hover, .search_box button:hover, .subscribe_form form button:hover {
-	background: #fa1d00f8;
+	background: #fa5252;
 }
 
 .footer_menu ul li a:hover, .copyright_area p a:hover {
@@ -437,14 +437,14 @@ section.shipping_area {
     font-weight: 700;
     font-size: 13px;
     text-transform: uppercase;
-    color: #f89500;
+    color: #1D1678;
     line-height: 1;
     float: left;
     margin-bottom: 15px;
 }
 
 .account-content a:hover {
-    border-bottom: 2px solid #f89500;
+    border-bottom: 2px solid #1D1678;
 }
 
 .account-content a + a {
@@ -460,7 +460,7 @@ section.shipping_area {
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #f89500;
+    color: #1D1678;
     margin-bottom: 3px;
 }
 .single-acc-field label[for="checkbox"] {
@@ -483,12 +483,12 @@ section.shipping_area {
 }
 
 .single-acc-field input:focus, .single-acc-field textarea:focus {
-    border-color: #f89500;
+    border-color: #1D1678;
 }
 
 
 .single-acc-field button {
-    background: #f89500;
+    background: #1D1678;
     color: #fff;
     border: 0;
     padding: 12px 32px;
@@ -499,7 +499,7 @@ section.shipping_area {
 }
 
 .single-acc-field button:hover {
-    background: #fa1d00f8;
+    background: #FA5252;
 }
 
 .account-thumb {
@@ -537,8 +537,11 @@ section.shipping_area {
     padding-left: 32px;
     margin-bottom: 20px;
     font-weight: 400;
-    color: #f89500;
+    color: #1D1678;
     cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
   }
   
   .single-acc-field  input[type="checkbox"] + label:last-child { margin-bottom: 0; }
@@ -548,7 +551,7 @@ section.shipping_area {
     display: block;
     width: 20px;
     height: 20px;
-    border: 2px solid #f89500;
+    border: 2px solid #1D1678;
     position: absolute;
     left: 0;
     top: 0;
@@ -613,7 +616,7 @@ section.shipping_area {
 }
 
 .search_container form, .search_box button {
-    border-radius: 0px;
+    border-radius: 30px;
 }
 .single_slider {
     height: 750px;
@@ -702,7 +705,6 @@ section.shipping_area {
 
 .section-title {
     margin-bottom: 30px;
-    margin-left: 13px;
 }
 
 .section-title h2 {
@@ -835,7 +837,7 @@ section.shipping_area {
 }
 
 .tranding-pro-price .current_price {
-    color: #080808 !important;
+    color: #3E51EB !important;
 }
 
 .tranding-pro-price .price_box span.current_price {

@@ -27,7 +27,7 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>
-                                    <img src="{{ url('storage/image/' . $p->gambar) }}" width="100" height="100">
+                                    <img src="{{ url('image/' . $p->gambar) }}" width="100" height="100">
                                 </td>
                                 <td>{{ $p->rasa }}</td>
                                 <td>{{ $p->jumlah }}</td>

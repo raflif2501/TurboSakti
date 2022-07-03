@@ -111,4 +111,13 @@ class StokController extends Controller
         $data->delete();
         return back()->with('success', 'Data sudah di hapus');
     }
+    public function detail($id){
+        // $data = Produk::find($id);
+        $data = Stok::find($id);
+        $data = DB::table('stoks')
+        ->join('produks', 'produks.id', '=', 'stoks.id_produk')
+        ->get();
+        // var_dump($data);die;
+        return view('user.detail',compact('data', $data));
+    }
 }

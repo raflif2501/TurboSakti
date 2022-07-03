@@ -39,7 +39,10 @@ class ProdukController extends Controller
             return view('produk.index', compact('data','produk','user','no'));
         } elseif($auth->hasRole('user')){
             $data = Produk::all();
-            return view('user.index', compact('data'));
+            $data = DB::table('produks')
+            ->join('stoks', 'stoks.id_produk', '=', 'produks.id')
+            ->get();
+            return view('user.index', compact('data',$data));
         }
     }
     public function create()
@@ -180,11 +183,12 @@ class ProdukController extends Controller
     }
     public function detail($id){
         // $data = Produk::find($id);
-        $data1 = Produk::find($id);
+        $data = Produk::find($id);
         $data = DB::table('stoks')
-        ->join('produks', 'produks.id', '=', 'stoks.id_produk')
+        ->join('produks', 'produks.id', '=', 'stoks.id_produk')->where('id_produk',$id)
         ->get();
-        // var_dump($data);die;
-        return view('user.detail',compact('data1', $data));
+        // $data = DB::table('produks')->where('id', $id)->get();
+        // dd($data);
+        return view('user.detail',compact('data', $data));
     }
 }

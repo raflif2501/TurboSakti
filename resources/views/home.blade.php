@@ -64,13 +64,13 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="row justify-content-center">
+            <div class="row justify-content-center">
                 @foreach ($data as $p)
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
                         <div class="single-tranding">
                             <a href="product-details.html">
                                 <div class="tranding-pro-img">
-                                    <img src="{{ url('storage/image/' . $p->gambar) }}" width="100" height="100">
+                                    <img src="{{ url('image/' . $p->gambar) }}" width="100" height="100">
                                 </div>
                                 <div class="tranding-pro-title">
                                     <h3>{{ $p->rasa }}</h3>
@@ -79,13 +79,13 @@
                                     <div class="price_box">
                                         <span class="current_price">{{ $p->harga_jual }}</span>
                                         {{-- <span class="old_price">$80.00</span> --}}
-        </div>
-        </div>
-        </a>
-        </div>
-        </div>
-        {{-- @endforeach --}}
-        </div> --}}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </section>
     <!--Tranding product-->
@@ -98,7 +98,8 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="widgets_container contact_us">
                             <div class="footer_logo">
-                                <a href="#"><img src="{{ asset('user') }}/img/logo/logo.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('user') }}/img/logo/logo.png"
+                                        alt=""></a>
                             </div>
                             <div class="footer_contact">
                                 <p>Toko Turbo Sakti Manding adalah usaha pribadi yang bergerak di penjualan olahan dari
