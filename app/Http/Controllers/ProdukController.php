@@ -36,7 +36,8 @@ class ProdukController extends Controller
             $data = Produk::all();
             $produk = Produk::count();
             $user = User::count();
-            return view('produk.index', compact('data','produk','user','no'));
+            $pemesanan = Pemesanan::count();
+            return view('produk.index', compact('data','produk','user','pemesanan','no'));
         } elseif($auth->hasRole('user')){
             $data = Produk::all();
             $data = DB::table('produks')
@@ -49,7 +50,8 @@ class ProdukController extends Controller
     {
         $produk = Produk::count();
         $user = User::count();
-        return view('produk.create', compact('produk', 'user'));
+        $pemesanan = Pemesanan::count();
+        return view('produk.create', compact('produk', 'user','pemesanan'));
     }
     public function store(Request $request)
     {
@@ -111,7 +113,8 @@ class ProdukController extends Controller
         $data = Produk::find($id);
         $produk = Produk::count();
         $user = User::count();
-        return view('produk.edit', compact('data', 'produk','user'));
+        $pemesanan = Pemesanan::count();
+        return view('produk.edit', compact('data', 'produk','user','pemesanan'));
     }
 
     /**

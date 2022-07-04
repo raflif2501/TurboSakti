@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pelanggan;
+use App\Models\Pemesanan;
 use App\Models\User;
 use App\Models\Produk;
 use Illuminate\Support\Str;
@@ -31,10 +32,11 @@ class PelangganController extends Controller
             $user = User::count();
             $produk = Produk::count();
             $pelanggan = Pelanggan::count();
+            $pemesanan = Pemesanan::count();
             $data = DB::table('pelanggan')
         ->join('users', 'users.id', '=', 'pelanggan.id_pelanggan')
         ->get();
-        return view('pelanggan.index', compact('data','produk','user','no','pelanggan',$data));
+        return view('pelanggan.index', compact('data','produk','user','no','pelanggan','pemesanan',$data));
         } elseif($auth->hasRole('user')){
         return view('user.index');
         }
@@ -86,7 +88,8 @@ class PelangganController extends Controller
         $data = Produk::find($id);
         $produk = Produk::count();
         $user = User::count();
-        return view('pelanggan.edit', compact('data', 'produk','user'));
+        $pemesanan = Pemesanan::count();
+        return view('pelanggan.edit', compact('data', 'produk','user','pemesanan'));
     }
 
     /**

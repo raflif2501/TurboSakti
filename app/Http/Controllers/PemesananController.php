@@ -27,11 +27,12 @@ class PemesananController extends Controller
         $user = User::count();
         $produk = Produk::count();
         $pelanggan = Pelanggan::count();
-        $data = DB::table('produks')
-        ->join('pemesanans', 'pemesanans.id', '=', 'produks.id')
-        ->get();
+        $pemesanan = Pemesanan::count();
+        // $data = DB::table('produks')
+        // ->join('pemesanans', 'pemesanans.id', '=', 'produks.id')
+        // ->get();
         // dd($data);
-        return view('pemesanan.index', compact('data', 'no','user','produk','pelanggan','data1','data2',$data));
+        return view('pemesanan.index', compact('data', 'no','user','produk','pelanggan','pemesanan','data1','data2',$data));
     }
 
     /**

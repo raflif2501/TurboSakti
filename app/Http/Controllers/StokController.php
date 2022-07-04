@@ -34,11 +34,12 @@ class StokController extends Controller
         if($auth->hasRole('admin')){
             $data = Stok::all();
             $produk = Produk::count();
+            $pemesanan = Pemesanan::count();
             $user = User::count();
             $data = DB::table('stoks')
             ->join('produks', 'produks.id', '=', 'stoks.id_produk')
             ->get();
-            return view('stok.index', compact('data','produk','user','no',$data));
+            return view('stok.index', compact('data','produk','pemesanan','user','no',$data));
         } elseif($auth->hasRole('user')){
             $data = Stok::all();
             $data = DB::table('stoks')
@@ -51,7 +52,8 @@ class StokController extends Controller
     {
         $produk = Produk::count();
         $user = User::count();
-        return view('stok.create', compact( 'produk', 'user'));
+        $pemesanan = Pemesanan::count();
+        return view('stok.create', compact( 'produk', 'user','pemesanan'));
     }
     public function store(Request $request)
     {

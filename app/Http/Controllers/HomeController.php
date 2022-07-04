@@ -35,7 +35,8 @@ class HomeController extends Controller
             $user = User::count();
             $produk = Produk::count();
             $pelanggan = Pelanggan::count();
-            return view('admin.index', compact('user','produk','pelanggan'));
+            $pemesanan = Pemesanan::count();
+            return view('admin.index', compact('user','produk','pelanggan','pemesanan'));
         } elseif($auth->hasRole('user')){
             $data = Produk::all();
             $data1 = Stok::all();
