@@ -40,7 +40,11 @@ class StokController extends Controller
             ->get();
             return view('stok.index', compact('data','produk','user','no',$data));
         } elseif($auth->hasRole('user')){
-
+            $data = Stok::all();
+            $data = DB::table('stoks')
+            ->join('produks', 'produks.id', '=', 'stoks.id_produks')
+            ->get();
+            return view('user.index', compact('data',$data));
         }
     }
     public function create()
@@ -51,10 +55,39 @@ class StokController extends Controller
     }
     public function store(Request $request)
     {
-        Stok::create($request->all());
-        Produk::create($request->all());
-        Alert::success('Success', 'Stok Berhasil Ditambahkan');
-        return redirect()->route('stok.index');
+        $this->validate($request, [
+            'rasa' => 'required',
+            'harga_jual' => 'required',
+            'gambar' => 'required',
+            'jumlah' => 'required',
+            'tgl_produksi' => 'required',
+            'harga_perbal' => 'required',
+            'id_produk' => 'required'
+        ]);
+
+        $image = $request->file('gambar');
+        $name = time().'.'.$image->getClientOriginalExtension();
+        $image->move(public_path('image'),$name);
+
+        $data = Produk::create([
+            'gambar' => $name,
+            'rasa' => $request->rasa,
+            'harga_jual' => $request->harga_jual,
+        ]);
+        $data1 = Stok::create([
+            'jumlah' => $request->jumlah,
+            'tgl_produksi' => $request->tgl_produksi,
+            'harga_perbal' => $request->harga_perbal,
+            'id_produk' => $request->id_produk
+        ]);
+        // dd($data);
+        if($data and $data1){
+            Alert::success('Success', 'Data Berhasil Ditambahkan');
+            return redirect()->route('produk.index');
+        }else{
+            Alert::error('Gagal', 'Data Gagal Ditambahkan');
+            return redirect()->route('produk.index');
+        }
     }
 
     /**

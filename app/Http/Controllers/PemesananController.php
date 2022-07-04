@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pemesanan;
+use App\Models\User;
+use App\Models\Pelanggan;
+use App\Models\Produk;
+use App\Models\Stok;
+use RealRashid\SweetAlert\Facades\Alert;
+use DB;
 
 class PemesananController extends Controller
 {
@@ -15,8 +21,17 @@ class PemesananController extends Controller
     public function index()
     {
         $data = Pemesanan::all();
+        $data1 = Pelanggan::all();
+        $data2 = User::all();
         $no = 1;
-        return view('pemesanan.index', compact('data', 'no'));
+        $user = User::count();
+        $produk = Produk::count();
+        $pelanggan = Pelanggan::count();
+        $data = DB::table('produks')
+        ->join('pemesanans', 'pemesanans.id', '=', 'produks.id')
+        ->get();
+        // dd($data);
+        return view('pemesanan.index', compact('data', 'no','user','produk','pelanggan','data1','data2',$data));
     }
 
     /**
@@ -37,7 +52,21 @@ class PemesananController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $auth = auth()->user();
+
+        if($auth->hasRole('admin')){
+            $user = User::count();
+            $produk = Produk::count();
+            $pelanggan = Pelanggan::count();
+            return view('admin.index', compact('user','produk','pelanggan'));
+        } elseif($auth->hasRole('user')){
+            Pemesanan::create($request->all());
+            // dd($request);
+            Alert::success('Success', 'Pemsanan Berhasil');
+            return redirect()->route('home');
+
+        }
+        // dd($request);
     }
 
     /**

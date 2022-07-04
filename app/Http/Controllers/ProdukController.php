@@ -54,7 +54,7 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'rasa' => 'required',
+            'rasa' => 'required|unique:produks',
             'harga_jual' => 'required',
             'gambar' => 'required',
             'jumlah' => 'required',
@@ -73,11 +73,12 @@ class ProdukController extends Controller
             'harga_jual' => $request->harga_jual,
         ]);
         $data1 = Stok::create([
-        'jumlah' => $request->jumlah,
-        'tgl_produksi' => $request->tgl_produksi,
-        'harga_perbal' => $request->harga_perbal,
-        'id_produk' => $request->id_produk
+            'jumlah' => $request->jumlah,
+            'tgl_produksi' => $request->tgl_produksi,
+            'harga_perbal' => $request->harga_perbal,
+            'id_produk' => $request->id_produk
         ]);
+        dd($data);
         if($data and $data1){
             Alert::success('Success', 'Data Berhasil Ditambahkan');
             return redirect()->route('produk.index');

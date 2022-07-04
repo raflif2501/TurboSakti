@@ -18,7 +18,7 @@
 
 <body>
     <div class="d-lg-flex half">
-        <div class="bg order-1 order-md-2" style="background-image: url('loginn/images/bg2.jpg');"></div>
+        <div class="bg order-1 order-md-2" style="background-image: url('img/logo-.png');"></div>
         <div class="contents order-2 order-md-1">
 
             <div class="container">
@@ -48,7 +48,7 @@
                                 <input type="password" class="form-control" placeholder="Masukkan Password"
                                     id="password" name="password">
                             </div>
-                            <input type="submit" class="btn btn-block btn-warning">
+                            <button type="submit" class="btn btn-block btn-warning">Register</button>
                         </form>
                         <span class="ml-auto"><a href="{{ route('login') }}" class="login">Login
                                 disini</a></span>

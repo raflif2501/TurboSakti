@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Pelanggan;
 use App\Models\Produk;
 use App\Models\Stok;
+use App\Models\Pemesanan;
+
 
 class HomeController extends Controller
 {

@@ -4,9 +4,9 @@
     <div class="card mb-4">
         <div class="card-header">
             <div class="card-body">
-                Data Stok
-                <a class="btn btn-warning mb-2 text-light" href="{{ route('stok.create') }}" style="float: right;">
-                    Tambah Stok
+                Data Pemesanan
+                <a class="btn btn-warning mb-2 text-light" href="{{ route('pemesanan.create') }}" style="float: right;">
+                    Tambah Pemesanan
                 </a>
             </div>
             <div class="card-body">
@@ -28,9 +28,9 @@
                                 <td>{{ $p->alamat }}</td>
                                 <td>{{ $p->no_tlp }}</td>
                                 <td class="text-center">
-                                    <form action="{{ route('pelanggan.destroy', $p->id) }}" method="post"
+                                    <form action="{{ route('pemesanan.destroy', $p->id) }}" method="post"
                                         style="display:inline">
-                                        <a href="{{ route('pelanggan.edit', $p->id) }}" class="btn btn-warning"><i
+                                        <a href="{{ route('pemesanan.edit', $p->id) }}" class="btn btn-warning"><i
                                                 class="fas fa-pencil"></i></a>
                                         <button type="submit" class="btn btn-danger"
                                             onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i></button>
@@ -46,6 +46,7 @@
         </div>
     </div>
 @endsection
+
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="{{ asset('admin/js/datatables-simple-demo.js') }}"></script>

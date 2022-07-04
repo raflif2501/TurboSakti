@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card mb-4">
-        <form action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('stok.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card-header">
                 <div class="card-body">
@@ -19,15 +19,19 @@
                                 </ul>
                             </div><br />
                         @endif
-                        <form method="POST" action="{{ route('stok.index') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('stok.store') }}" enctype="multipart/form-data">
                             <div class="form-group">
                                 @csrf
                                 <label>Rasa</label>
                                 <select name="rasa" id="rasa" class="form-control mb-3">
-                                    <option value="(160 gram) rasa bawang putih original warna putih">(160 gram) Rasa Bawang Putih Original Warna Putih</option>
-                                    <option value="(130 gram) rasa bawang putih original warna kuning">(130 gram) Rasa Bawang Putih Original Warna Kuning</option>
-                                    <option value="(160 gram) rasa pedas manis warna putih">(160 gram) Rasa Pedas Manis Warna Kuning</option>
-                                    <option value="(130 gram) rasa pedas manis warna merah">(130 gram) Rasa Pedas Manis Warna Putih</option>
+                                    <option value="(160 gram) rasa bawang putih original warna putih">(160 gram) Rasa Bawang
+                                        Putih Original Warna Putih</option>
+                                    <option value="(130 gram) rasa bawang putih original warna kuning">(130 gram) Rasa
+                                        Bawang Putih Original Warna Kuning</option>
+                                    <option value="(160 gram) rasa pedas manis warna putih">(160 gram) Rasa Pedas Manis
+                                        Warna Kuning</option>
+                                    <option value="(130 gram) rasa pedas manis warna merah">(130 gram) Rasa Pedas Manis
+                                        Warna Putih</option>
                                 </select>
                                 <label>Harga</label>
                                 <input type="text" class="form-control mb-3" name="harga_jual">

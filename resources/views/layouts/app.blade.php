@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Turbo Sakti</title>
+    <title>Turbo Sakti | Admin</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img') }}/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="{{ asset('admin') }}/css/styles.css" rel="stylesheet" />
@@ -87,12 +87,12 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
                             Grafik Keuangan
                         </a>
-                        <a class="nav-link" href="{{ route('pelanggan.index')}}">
+                        <a class="nav-link" href="{{ route('pelanggan.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-users-between-lines"></i></div>
                             Pelanggan
                         </a>
-                        <a class="nav-link" href="{{ route('pemesanan.index')}}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users-between-lines"></i></div>
+                        <a class="nav-link" href="{{ route('pemesanan.index') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
                             Pemesanan
                         </a>
                         <a class="nav-link" href="tables.html">

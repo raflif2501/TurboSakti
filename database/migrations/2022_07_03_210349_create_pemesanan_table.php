@@ -16,11 +16,12 @@ class CreatePemesananTable extends Migration
         Schema::create('pemesanans', function (Blueprint $table) {
             $table->id('id');
             $table->foreignId('id_pelanggan')->constrained('pelanggan');
-            $table->date('tanggal');
+            $table->string('nama_pemesan');
             $table->foreignId('id_produk')->constrained('produks');
-            $table->string('jumlah');
+            $table->string('rasa');
             $table->string('harga');
-            $table->string('total_harga');
+            $table->string('total_harga')->nullable()->change();
+            $table->string('jumlah_pemesanan');
             $table->timestamps();
         });
     }
