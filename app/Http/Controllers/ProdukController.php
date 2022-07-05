@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Produk;
+use App\Models\Pemesanan;
 use App\Models\Stok;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -143,7 +144,7 @@ class ProdukController extends Controller
         } else {
 
             //hapus old image
-            Storage::disk('local')->delete('public/image/'.$data->image);
+            Storage::disk('local')->delete('image/'.$data->image);
 
             //upload new image
             $image = $request->file('gambar');

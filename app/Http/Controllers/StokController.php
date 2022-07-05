@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Produk;
+use App\Models\Pemesanan;
+use App\Models\Pelanggan;
 use App\Models\Stok;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
+use Storage;
 use DB;
 
 class StokController extends Controller
@@ -115,7 +118,8 @@ class StokController extends Controller
         $data = Stok::find($id);
         $produk = Produk::count();
         $user = User::count();
-        return view('stok.edit', compact('data', 'produk','user'));
+        $pemesanan = Pemesanan::count();
+        return view('stok.edit', compact('data', 'produk','user','pemesanan'));
     }
 
     /**
@@ -127,11 +131,49 @@ class StokController extends Controller
     */
     public function update(Request $request, $id)
     {
-        $data = Stok::find($id);
-        $data->update($request->all());
-        $user = User::count();
-        Alert::success('Success', 'Stok Berhasil Dirubah');
-        return redirect()->route('stok.index');
+        $this->validate($request, [
+            'rasa' => 'required',
+            'harga_jual' => 'required',
+            'gambar' => 'required'
+        ]);
+
+        $data = Produk::findOrFail($id);
+
+        if($request->file('gambar') == "") {
+        $data->update([
+            'rasa' => $request->rasa,
+            'harga_jual' => $request->harga_jual
+        ]);
+
+        } else {
+
+        //hapus old image
+        Storage::disk('local')->delete('image/'.$data->image);
+
+        //upload new image
+        $image = $request->file('gambar');
+        $name = time().'.'.$image->getClientOriginalExtension();
+        $image->move(public_path('image'),$name);
+
+        $data->update([
+            'gambar' => $image->hashName(),
+            'rasa' => $request->rasa,
+            'harga_jual' => $request->harga_jual
+        ]);
+        }
+
+        if($data){
+        //redirect dengan pesan sukses
+            Alert::success('Success', 'Data Berhasil Dirubah');
+            return redirect()->route('produk.index');
+        }else{
+        //redirect dengan pesan error
+            Alert::error('Gagal', 'Data Gagal Dirubah');
+            return redirect()->route('produk.index');
+        }
+        // $data = Produk::find($id);
+        // $data->update($request->all());
+        // $produk = Produk::count();
     }
 
     /**
