@@ -15,7 +15,7 @@ class CreateStokTable extends Migration
     {
         Schema::create('stoks', function (Blueprint $table) {
             $table->id();
-            $table->string('jumlah');
+            $table->integer('jumlah');
             $table->string('harga_perbal');
             $table->bigInteger('id_produk')->unsigned();
             $table->foreign('id_produk')->references('id')

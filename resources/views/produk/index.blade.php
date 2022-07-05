@@ -7,8 +7,8 @@
     <div class="card mb-4">
         <div class="card-header">
             <div class="card-body">
-                <h4>Data Jenis Produk</h4>
-                <a class="btn btn-primary mb-2 text-light" href="{{ route('stok.create') }}" style="float: right;">
+                Jenis Produk
+                <a class="btn btn-primary text-light" href="{{ route('stok.create') }}" style="float: right;">
                     Tambah Jenis
                 </a>
             </div>

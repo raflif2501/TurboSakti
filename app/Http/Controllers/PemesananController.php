@@ -53,11 +53,16 @@ class PemesananController extends Controller
             $produk = Produk::count();
             return view('admin.index', compact('user','produk'));
         } elseif($auth->hasRole('user')){
-            Pemesanan::create($request->all());
-            // dd($request);
-            Alert::success('Success', 'Pemsanan Berhasil');
-            return redirect()->route('home');
-
+            $jumlah = $request->jumlah_pemesanan;
+            $stok = Stok::find(['id_produk'=>$request->id_produk]);
+            foreach($stok as $row){
+                $total = $row->jumlah - $jumlah;
+                $row->update(['jumlah'=>$total]);
+                Pemesanan::create($request->all());
+                // dd($request);
+                Alert::success('Success', 'Pemsanan Berhasil');
+                return redirect()->route('home');
+            }
         }
         // dd($request);
     }
