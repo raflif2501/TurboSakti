@@ -39,8 +39,6 @@
                                 <input type="file" class="form-control mb-3" name="gambar">
                                 <label>Jumlah</label>
                                 <input type="text" class="form-control mb-3" name="jumlah">
-                                <label>Tanggal Produksi</label>
-                                <input type="date" class="form-control mb-3" name="tgl_produksi">
                                 <label>Harga Per ball</label>
                                 <input type="text" class="form-control mb-3" name="harga_perbal">
                                 <label>Kode Produk</label>

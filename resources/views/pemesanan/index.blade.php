@@ -4,11 +4,11 @@
     <div class="card mb-4">
         <div class="card-header">
             <!-- <div class="card-body">
-                                                                                                                            Data Stok
-                                                                                                                            <a class="btn btn-warning mb-2 text-light" href="{{ route('pemesanan.create') }}" style="float: right;">
-                                                                                                                                Tambah Stok
-                                                                                                                            </a>
-                                                                                                                        </div> -->
+                                                                                                                                        Data Stok
+                                                                                                                                        <a class="btn btn-warning mb-2 text-light" href="{{ route('pemesanan.create') }}" style="float: right;">
+                                                                                                                                            Tambah Stok
+                                                                                                                                        </a>
+                                                                                                                                    </div> -->
             <div class="card-body">
                 <table id="datatablesSimple">
                     <thead>
@@ -17,7 +17,7 @@
                             <th>Nama Pemesan</th>
                             <th>Tanggal</th>
                             <th>Rasa Produk</th>
-                            <th>Jumlah Produk</th>
+                            <th>Jumlah</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -32,8 +32,6 @@
                                 <td class="text-center">
                                     <form action="{{ route('pemesanan.destroy', $p->id) }}" method="post"
                                         style="display:inline">
-                                        <a href="{{ route('pemesanan.show', $p->id) }}" class="btn btn-primary"><i
-                                                class="fas fa-eye"></i></a>
                                         <a href="{{ route('pemesanan.edit', $p->id) }}" class="btn btn-warning"><i
                                                 class="fas fa-pencil"></i></a>
                                         <button type="submit" class="btn btn-danger"

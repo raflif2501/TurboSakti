@@ -46,7 +46,7 @@ class StokController extends Controller
         } elseif($auth->hasRole('user')){
             $data = Stok::all();
             $data = DB::table('stoks')
-            ->join('produks', 'produks.id', '=', 'stoks.id_produks')
+            ->join('produks', 'produks.id', '=', 'stoks.id_produk')
             ->get();
             return view('user.index', compact('data',$data));
         }
@@ -54,9 +54,13 @@ class StokController extends Controller
     public function create()
     {
         $produk = Produk::count();
+        $data = Produk::all();
+        $data = DB::table('produks')
+        ->join('stoks', 'stoks.id_produk', '=', 'produks.id')
+        ->get();
         $user = User::count();
         $pemesanan = Pemesanan::count();
-        return view('stok.create', compact( 'produk', 'user','pemesanan'));
+        return view('stok.create', compact( 'produk', 'user','pemesanan','data', $data));
     }
     public function store(Request $request)
     {
@@ -65,7 +69,6 @@ class StokController extends Controller
             'harga_jual' => 'required',
             'gambar' => 'required',
             'jumlah' => 'required',
-            'tgl_produksi' => 'required',
             'harga_perbal' => 'required',
             'id_produk' => 'required'
         ]);
@@ -81,7 +84,6 @@ class StokController extends Controller
         ]);
         $data1 = Stok::create([
             'jumlah' => $request->jumlah,
-            'tgl_produksi' => $request->tgl_produksi,
             'harga_perbal' => $request->harga_perbal,
             'id_produk' => $request->id_produk
         ]);
@@ -104,7 +106,7 @@ class StokController extends Controller
     public function show($id)
     {
         $data = Stok::find($id);
-        return view('stok.index', compact('data'));
+        return view('stok.index', compact('data',$data));
     }
 
     /**
@@ -117,9 +119,13 @@ class StokController extends Controller
     {
         $data = Stok::find($id);
         $produk = Produk::count();
+        $data = DB::table('produks')
+        ->join('stoks', 'stoks.id_produk', '=', 'produks.id')
+        ->get();
+        // dd($data);
         $user = User::count();
         $pemesanan = Pemesanan::count();
-        return view('stok.edit', compact('data', 'produk','user','pemesanan'));
+        return view('stok.edit', compact('data', 'produk','user','pemesanan',$data));
     }
 
     /**

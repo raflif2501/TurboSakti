@@ -17,7 +17,6 @@
                             <th>Gambar</th>
                             <th>Rasa</th>
                             <th>Jumlah Stok</th>
-                            <th>Tanggal Produksi</th>
                             <th>Harga Perbal</th>
                             <th class="text-center">Action</th>
                         </tr>
@@ -31,7 +30,6 @@
                                 </td>
                                 <td>{{ $p->rasa }}</td>
                                 <td>{{ $p->jumlah }}</td>
-                                <td>{{ $p->tgl_produksi }}</td>
                                 <td>{{ $p->harga_perbal }}</td>
                                 <td class="text-center">
                                     <form action="{{ route('stok.destroy', $p->id) }}" method="post"
