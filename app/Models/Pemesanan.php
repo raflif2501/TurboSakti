@@ -11,5 +11,12 @@ class Pemesanan extends Model
 
     protected $table ='pemesanans';
     protected $primarykey ='id';
-    protected $fillable = ['id', 'id_pelanggan', 'id_produk', 'jumlah', 'harga','total_harga','jumlah_pemesanan','rasa','nama_pemesan'];
+    protected $guarded = [];
+
+    protected $with = ['product'];
+
+    public function product()
+    {
+        return $this->belongsTo('App\Models\Produk', 'id_produk');
+    }
 }

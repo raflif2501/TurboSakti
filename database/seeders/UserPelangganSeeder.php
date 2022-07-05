@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Pelanggan;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -18,8 +17,6 @@ class UserPelangganSeeder extends Seeder
      */
     public function run()
     {
-         DB::table('pelanggan')->delete();
-         DB::table('users')->delete();
         Role::create(['name'=> 'admin']);
         Role::create(['name'=> 'user']);
          /***********************************
@@ -42,16 +39,6 @@ class UserPelangganSeeder extends Seeder
 
          $this->command->info('User telah diisi!');
 
-         # Ciptakan wali si $ayu
-         Pelanggan::create(array(
-         'alamat' => 'Manding',
-         'no_tlp' => '085330276771',
-         'id_pelanggan' => $user->id,
-         ));
-         # Informasi ketika semua wali telah diisi.
-         $this->command->info('User dan Pelanggan telah diisi!');
-
-
          $admin = User::create(array(
          'name' => 'ADMIN',
          'email' => 'admin@gmail.com',
@@ -61,14 +48,6 @@ class UserPelangganSeeder extends Seeder
 
          $this->command->info('Admin telah diisi!');
 
-         Pelanggan::create(array(
-         'alamat' => 'Manding',
-         'no_tlp' => '085330276771',
-         'id_pelanggan' => $admin->id,
-         ));
-         # Informasi ketika semua wali telah diisi.
-         $this->command->info('User dan Pelanggan telah diisi!');
-
         $admin1 = User::create(array(
         'name' => 'Firdaus',
         'email' => 'daus@gmail.com',
@@ -77,13 +56,5 @@ class UserPelangganSeeder extends Seeder
         $admin1->assignRole('admin');
 
         $this->command->info('Admin telah diisi!');
-
-        Pelanggan::create(array(
-        'alamat' => 'Manding',
-        'no_tlp' => '085330276771',
-        'id_pelanggan' => $admin1->id,
-        ));
-        # Informasi ketika semua wali telah diisi.
-        $this->command->info('User dan Pelanggan telah diisi!');
     }
 }

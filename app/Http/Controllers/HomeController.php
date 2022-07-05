@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Pelanggan;
 use App\Models\Produk;
 use App\Models\Stok;
 use App\Models\Pemesanan;
@@ -34,9 +33,9 @@ class HomeController extends Controller
         if($auth->hasRole('admin')){
             $user = User::count();
             $produk = Produk::count();
-            $pelanggan = Pelanggan::count();
+            $stok = Stok::count();
             $pemesanan = Pemesanan::count();
-            return view('admin.index', compact('user','produk','pelanggan','pemesanan'));
+            return view('admin.index', compact('user','produk','stok','pemesanan'));
         } elseif($auth->hasRole('user')){
             $data = Produk::all();
             $data1 = Stok::all();

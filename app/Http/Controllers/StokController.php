@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Produk;
 use App\Models\Pemesanan;
-use App\Models\Pelanggan;
 use App\Models\Stok;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;

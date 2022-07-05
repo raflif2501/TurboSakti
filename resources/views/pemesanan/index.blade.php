@@ -4,14 +4,20 @@
     <div class="card mb-4">
         <div class="card-header">
             <div class="card-body">
+                <h4>Data Pemesanan</h4>
+            </div>
+            <div class="card-body">
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>Nama Pemesan</th>
+                            <th>Alamat</th>
+                            <th>No HP</th>
                             <th>Tanggal</th>
                             <th>Rasa Produk</th>
                             <th>Jumlah</th>
+                            <th>Total harga</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -20,9 +26,15 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $p->nama_pemesan }}</td>
+                                <td>{{ $p->alamat }}</td>
+                                <td>{{ $p->no_hp }}</td>
                                 <td>{{ $p->created_at }}</td>
-                                <td>{{ $p->rasa }}</td>
+                                <td>{{ $p->product->rasa }}</td>
                                 <td>{{ $p->jumlah_pemesanan }}</td>
+                                @php
+                                    $total = $p->jumlah_pemesanan * $p->harga;
+                                @endphp
+                                <td>{{ $total }}</td>
                                 <td class="text-center">
                                     <form action="{{ route('pemesanan.destroy', $p->id) }}" method="post"
                                         style="display:inline">

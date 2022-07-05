@@ -129,9 +129,6 @@
                                     <li><span>Stok &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;:
                                         </span>{{ $p->jumlah }}
                                     </li>
-                                    <li><span>Tanggal Produksi &emsp;&emsp;&emsp;&ensp;:
-                                        </span>{{ $p->tgl_produksi }}
-                                    </li>
                                     <li><span>Harga Per ball (10 bks)&emsp;: </span>{{ $p->harga_perbal }}</li>
                                 </ul>
                             </div>
@@ -139,28 +136,28 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 {{-- @method('HEAD') --}}
-                                <div class="form-group row">
+                                <div class="form-group row" style="display: none;">
                                     <label class="col-sm-2 col-form-label">ID &emsp;&emsp;&emsp;&emsp;: </label>
                                     <div class="col-sm-10">
                                         <input type="text" readonly class="form-control-plaintext"
-                                            name="id_pelanggan" value="{{ auth()->user()->id }}">
+                                            name="id_pemesan" value="{{ auth()->user()->id }}">
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row" style="display: none;">
                                     <label class="col-sm-2 col-form-label">Pemesan&emsp;: </label>
                                     <div class="col-sm-10">
                                         <input type="text" readonly class="form-control-plaintext"
                                             name="nama_pemesan" value="{{ auth()->user()->name }}">
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row" style="display: none;">
                                     <label class="col-sm-2 col-form-label">ID Produk &ensp;: </label>
                                     <div class="col-sm-10">
                                         <input type="text" readonly class="form-control-plaintext"
                                             name="id_produk" value="{{ $p->id }}">
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row" style="display: none;">
                                     <label class="col-sm-2 col-form-label">Rasa &ensp;&ensp;&ensp;&ensp;&ensp;:
                                     </label>
                                     <div class="col-sm-10">
@@ -168,13 +165,16 @@
                                             value="{{ $p->rasa }}">
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row" style="display: none;">
                                     <label class="col-sm-2 col-form-label">Harga &emsp;&ensp;&ensp;: </label>
                                     <div class="col-sm-10">
                                         <input type="text" readonly class="form-control-plaintext" name="harga"
                                             value="{{ $p->harga_jual }}">
                                     </div>
                                 </div>
+                                <textarea type="text" class="form-control mb-1" name="alamat" placeholder="Masukkan Alamat"></textarea>
+                                <input type="text"class="form-control mb-1" name="no_hp"
+                                    placeholder="Masukkan No HP">
                                 <div class="product_variant quantity">
                                     <label>Jumlah</label>
                                     <input min="1" max="{{ $p->jumlah }}" value="1" type="number"

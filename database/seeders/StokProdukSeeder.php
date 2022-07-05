@@ -31,8 +31,8 @@ class StokProdukSeeder extends Seeder
 
         # Produk Pertama bernama Noviyanto Rachmadi. Dengan NIM 1015015072.
         $produk1 = Produk::create(array(
-        'gambar' => '',
-        'rasa' => 'Pedas Manis',
+        'gambar' => 'bawang_putih.png',
+        'rasa' => '(130 gram) rasa pedas manis warna merah',
         'harga_jual' => '5000'));
 
         $this->command->info('Produk telah diisi!');
@@ -40,7 +40,6 @@ class StokProdukSeeder extends Seeder
         # Ciptakan wali si $ayu
         Stok::create(array(
         'jumlah' => '100',
-        'tgl_produksi' => '22/10/10',
         'harga_perbal' => '50000',
         'id_produk' => $produk1->id,
         ));
