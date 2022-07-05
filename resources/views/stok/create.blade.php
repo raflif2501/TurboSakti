@@ -48,12 +48,12 @@
                     </div>
                     <div class="row">
                         <div class="col-md-1">
-                            <button type="submit" class="btn btn-md btn-warning text-light">submit</button>
+                            <button type="submit" class="btn btn-md btn-primary text-light">submit</button>
                         </div>
                         &ensp;
                         <div class="col-md-1">
                             <a href="{{ route('stok.index') }}" type="button"
-                                class="btn btn-warning text-light">Kembali</a>
+                                class="btn btn-primary text-light">Kembali</a>
                         </div>
                     </div>
                 </div>

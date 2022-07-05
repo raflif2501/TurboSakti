@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="card mb-4">
-        <form action="{{ route('stok.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card-header">
                 <div class="card-body">
@@ -45,11 +45,11 @@
                     </div>
                     <div class="row">
                         <div class="col-md-1">
-                            <button type="submit" class="btn btn-md btn-warning text-light">submit</button>
+                            <button type="submit" class="btn btn-md btn-primary text-light">submit</button>
                         </div>
                         <div class="col-md-1">
                             <a href="{{ route('produk.index') }}" type="button"
-                                class="btn btn-warning text-light">Kembali</a>
+                                class="btn btn-primary text-light">Kembali</a>
                         </div>
                     </div>
                 </div>

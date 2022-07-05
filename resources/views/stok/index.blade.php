@@ -5,7 +5,7 @@
         <div class="card-header">
             <div class="card-body">
                 Data Stok
-                <a class="btn btn-warning mb-2 text-light" href="{{ route('stok.create') }}" style="float: right;">
+                <a class="btn btn-primary mb-2 text-light" href="{{ route('stok.create') }}" style="float: right;">
                     Tambah Stok
                 </a>
             </div>

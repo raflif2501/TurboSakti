@@ -109,7 +109,7 @@
                     <h1 class="mt-4"></h1>
                     <div class="row">
                         <div class="col-xl-3 col-md-6">
-                            <div class="card bg-warning text-white mb-4">
+                            <div class="card bg-danger text-white mb-4">
                                 <div class="card-body">Jenis Produk</div>
                                 <center>
                                     <h5>{{ $produk }}</h5>
@@ -124,7 +124,7 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
-                            <div class="card bg-warning text-white mb-4">
+                            <div class="card bg-primary text-white mb-4">
                                 <div class="card-body">Jumlah Pemesan</div>
                                 <center>
                                     <h5>{{ $pemesanan }}</h5>
@@ -138,7 +138,7 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
-                            <div class="card bg-warning text-white mb-4">
+                            <div class="card bg-success text-white mb-4">
                                 <div class="card-body">Success Card</div>
                                 <center>
                                     <h5>{{ $user }}</h5>

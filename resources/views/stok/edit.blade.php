@@ -4,7 +4,7 @@
     <div class="container-fluid px-4">
         <div class="row">
             <div class="col-md-6 position-relative">
-                <h2 class="mt-1 text-warning">Edit Stok</h2>
+                <h2 class="mt-1 text-primary">Edit Stok</h2>
             </div>
         </div>
         <div class="card mb-4">
@@ -63,12 +63,12 @@
                             </div>
                             <div class="row ">
                                 <div class="col-md-1">
-                                    <button type="submit" class="btn btn-md btn-warning text-light">UPDATE</button>
+                                    <button type="submit" class="btn btn-md btn-primary text-light">UPDATE</button>
                                 </div>
                                 &ensp;
                                 <div class="col-md-1">
                                     <a href="{{ route('stok.index') }}" type="button"
-                                        class="btn btn-warning text-light">Kembali</a>
+                                        class="btn btn-primary text-light">Kembali</a>
                                 </div>
                             </div>
                         </form>
