@@ -22,26 +22,26 @@
                         <form method="POST" action="{{ route('stok.store') }}" enctype="multipart/form-data">
                             <div class="form-group">
                                 @csrf
-                                <label>Rasa</label>
+                                <label>Rasa :</label>
                                 <select name="rasa" id="rasa" class="form-control mb-3">
-                                    <option value="(160 gram) rasa bawang putih original warna putih">(160 gram) Rasa Bawang
+                                    <option value="(130 gram) rasa bawang putih original warna putih">(130 gram) Rasa Bawang
                                         Putih Original Warna Putih</option>
-                                    <option value="(130 gram) rasa bawang putih original warna kuning">(130 gram) Rasa
-                                        Bawang Putih Original Warna Kuning</option>
-                                    <option value="(160 gram) rasa pedas manis warna putih">(160 gram) Rasa Pedas Manis
-                                        Warna Kuning</option>
-                                    <option value="(130 gram) rasa pedas manis warna merah">(130 gram) Rasa Pedas Manis
+                                    <option value="(260 gram) rasa bawang putih original warna putih">(260 gram) Rasa
+                                        Bawang Putih Original Warna Putih</option>
+                                    <option value="(130 gram) rasa pedas manis warna putih">(130 gram) Rasa Pedas Manis
+                                        Warna Putih</option>
+                                    <option value="(260 gram) rasa pedas manis warna putih">(260 gram) Rasa Pedas Manis
                                         Warna Putih</option>
                                 </select>
-                                <label>Harga</label>
+                                <label>Harga :</label>
                                 <input type="text" class="form-control mb-3" name="harga_jual">
-                                <label>Gambar</label>
+                                <label>Gambar :</label>
                                 <input type="file" class="form-control mb-3" name="gambar">
-                                <label>Jumlah</label>
+                                <label>Jumlah :</label>
                                 <input type="text" class="form-control mb-3" name="jumlah">
-                                <label>Harga Per ball</label>
+                                <label>Harga Per ball :</label>
                                 <input type="text" class="form-control mb-3" name="harga_perbal">
-                                <label>Kode Produk</label>
+                                <label>Kode Produk :</label>
                                 <input type="number" class="form-control mb-3"name="id_produk">
                             </div>
                         </form>
