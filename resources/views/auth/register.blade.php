@@ -48,6 +48,11 @@
                                 <input type="password" class="form-control" placeholder="Masukkan Password"
                                     id="password" name="password">
                             </div>
+                            <div class="form-group last mb-3">
+                                <label for="password">{{ __('Password') }}</label>
+                                <input type="password" class="form-control" placeholder="Masukkan Password Confirmation"
+                                    id="password" name="password_confirmation">
+                            </div>
                             <button type="submit" class="btn btn-block btn-warning">Register</button>
                         </form>
                         <span class="ml-auto"><a href="{{ route('login') }}" class="login">Login

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Produk;
 use App\Models\Pemesanan;
-use App\Models\Stok;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -41,9 +40,6 @@ class ProdukController extends Controller
             return view('produk.index', compact('data','produk','user','pemesanan','no'));
         } elseif($auth->hasRole('user')){
             $data = Produk::all();
-            $data = DB::table('produks')
-            ->join('stoks', 'stoks.id_produk', '=', 'produks.id')
-            ->get();
             return view('user.index', compact('data',$data));
         }
     }
@@ -60,29 +56,23 @@ class ProdukController extends Controller
             'rasa' => 'required|unique:produks',
             'harga_jual' => 'required',
             'gambar' => 'required',
-            'jumlah' => 'required',
-            'tgl_produksi' => 'required',
-            'harga_perbal' => 'required',
-            'id_produk' => 'required'
+            'stok' => 'required',
         ]);
 
         $image = $request->file('gambar');
         $name = time().'.'.$image->getClientOriginalExtension();
         $image->move(public_path('image'),$name);
 
+        $harga_per_ball = $request->harga_jual * 10;
+
         $data = Produk::create([
             'gambar' => $name,
             'rasa' => $request->rasa,
             'harga_jual' => $request->harga_jual,
+            'stok' => $request->stok,
+            'harga_per_ball' => $harga_per_ball,
         ]);
-        $data1 = Stok::create([
-            'jumlah' => $request->jumlah,
-            'tgl_produksi' => $request->tgl_produksi,
-            'harga_perbal' => $request->harga_perbal,
-            'id_produk' => $request->id_produk
-        ]);
-        dd($data);
-        if($data and $data1){
+        if($data){
             Alert::success('Success', 'Data Berhasil Ditambahkan');
             return redirect()->route('produk.index');
         }else{
@@ -130,7 +120,8 @@ class ProdukController extends Controller
         $this->validate($request, [
             'rasa' => 'required',
             'harga_jual' => 'required',
-            'gambar' => 'required'
+            'gambar' => 'required',
+            'stok' => 'required'
         ]);
 
         $data = Produk::findOrFail($id);
@@ -138,7 +129,8 @@ class ProdukController extends Controller
         if($request->file('gambar') == "") {
             $data->update([
                 'rasa' => $request->rasa,
-                'harga_jual' => $request->harga_jual
+                'harga_jual' => $request->harga_jual,
+                'stok' => $request->stok
         ]);
 
         } else {
@@ -152,9 +144,10 @@ class ProdukController extends Controller
             $image->move(public_path('image'),$name);
 
             $data->update([
-                'gambar'        => $image->hashName(),
+                'gambar'        => $name,
                 'rasa'          => $request->rasa,
-                'harga_jual'    => $request->harga_jual
+                'harga_jual'    => $request->harga_jual,
+                'stok' => $request->stok
             ]);
         }
 
@@ -180,18 +173,15 @@ class ProdukController extends Controller
     */
     public function destroy($id)
     {
-        $data = Produk::findOrFail($id);
+        $data = Produk::find($id);
         $data->delete();
         return back()->with('success', 'Data sudah di hapus');
     }
     public function detail($id){
         // $data = Produk::find($id);
-        $data = Produk::find($id);
-        $data = DB::table('stoks')
-        ->join('produks', 'produks.id', '=', 'stoks.id_produk')->where('id_produk',$id)
-        ->get();
+        $p = Produk::find($id);
         // $data = DB::table('produks')->where('id', $id)->get();
         // dd($data);
-        return view('user.detail',compact('data', $data));
+        return view('user.detail',compact('p', $p));
     }
 }

@@ -29,7 +29,7 @@
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-md-7">
-                        <h3>SIlahkan Login</h3>
+                        <h3>Silahkan Login</h3>
                         <br>
                         <form action="{{ route('login') }}" method="POST">
                             @csrf

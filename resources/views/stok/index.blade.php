@@ -1,54 +1,54 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="card mb-4">
-        <div class="card-header">
-            <div class="card-body">
-                Data Stok
-                <a class="btn btn-primary mb-2 text-light" href="{{ route('stok.create') }}" style="float: right;">
-                    Tambah Stok
-                </a>
-            </div>
-            <div class="card-body">
-                <table id="datatablesSimple">
-                    <thead>
+<div class="card mb-4">
+    <div class="card-header">
+        <div class="card-body">
+            Data Stok
+            <a class="btn btn-primary mb-2 text-light" href="{{ route('stok.create') }}" style="float: right;">
+                Tambah Stok
+            </a>
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Gambar</th>
+                        <th>Rasa</th>
+                        <th>Jumlah Stok</th>
+                        <th>Harga Perbal</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($data as $p)
                         <tr>
-                            <th>No</th>
-                            <th>Gambar</th>
-                            <th>Rasa</th>
-                            <th>Jumlah Stok</th>
-                            <th>Harga Perbal</th>
-                            <th class="text-center">Action</th>
+                            <td>{{ $no++ }}</td>
+                            <td>
+                                <img src="{{ url('image/' . $p->gambar) }}" width="100" height="100">
+                            </td>
+                            <td>{{ $p->rasa }}</td>
+                            <td>{{ $p->jumlah }}</td>
+                            <td>{{ $p->harga_perbal }}</td>
+                            <td class="text-center">
+                                <form action="{{ route('stok.destroy', $p->id) }}" method="post"
+                                    style="display:inline">
+                                    <a href="{{ route('stok.edit', $p->id) }}" class="btn btn-warning"><i
+                                            class="fas fa-pencil"></i></a>
+                                    <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i></button>
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($data as $p)
-                            <tr>
-                                <td>{{ $no++ }}</td>
-                                <td>
-                                    <img src="{{ url('image/' . $p->gambar) }}" width="100" height="100">
-                                </td>
-                                <td>{{ $p->rasa }}</td>
-                                <td>{{ $p->jumlah }}</td>
-                                <td>{{ $p->harga_perbal }}</td>
-                                <td class="text-center">
-                                    <form action="{{ route('stok.destroy', $p->id) }}" method="post"
-                                        style="display:inline">
-                                        <a href="{{ route('stok.edit', $p->id) }}" class="btn btn-warning"><i
-                                                class="fas fa-pencil"></i></a>
-                                        <button type="submit" class="btn btn-danger"
-                                            onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i></button>
-                                        @csrf
-                                        @method('DELETE')
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 @endsection
 
 @section('js')

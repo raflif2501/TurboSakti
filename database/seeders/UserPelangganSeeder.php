@@ -19,17 +19,7 @@ class UserPelangganSeeder extends Seeder
     {
         Role::create(['name'=> 'admin']);
         Role::create(['name'=> 'user']);
-         /***********************************
-         *** SIAPKAN SEEDER DOSEN DISINI ***
-         ***********************************/
 
-         //
-
-         // Kita akan membuat 3 orang produk sebagai sampel
-         // Disinilah alasan kenapa saya membuat model terlebih dahulu
-         // Karena saya memanfaatkan model untuk mengcreate record
-
-         # Produk Pertama bernama Noviyanto Rachmadi. Dengan NIM 1015015072.
          $user = User::create(array(
          'name' => 'Firdaus',
          'email' => 'firdaus@gmail.com',

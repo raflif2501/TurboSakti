@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\StokController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PemesananController;
 /*
@@ -24,7 +23,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('produk', ProdukController::class);
-Route::resource('stok', StokController::class);
 Route::resource('pelanggan', PelangganController::class);
 Route::resource('pemesanan', PemesananController::class);
 Route::get('/detail/{id}', [ProdukController::class, 'detail'])->name('detail');

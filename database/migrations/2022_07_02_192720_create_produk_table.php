@@ -18,6 +18,8 @@ class CreateProdukTable extends Migration
             $table->string('gambar');
             $table->string('rasa');
             $table->string('harga_jual');
+            $table->integer('stok');
+            $table->integer('harga_per_ball');
             $table->timestamps();
         });
     }

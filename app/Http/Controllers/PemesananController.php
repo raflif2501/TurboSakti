@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Pemesanan;
 use App\Models\User;
 use App\Models\Produk;
-use App\Models\Stok;
 use RealRashid\SweetAlert\Facades\Alert;
 use DB;
 
@@ -24,8 +23,9 @@ class PemesananController extends Controller
         $no = 1;
         $user = User::count();
         $produk = Produk::count();
+        $nama_pemesan = nama_pemesan::count();
         $pemesanan = Pemesanan::count();
-        return view('pemesanan.index', compact('data', 'no','user','produk','pemesanan','data2',$data));
+        return view('pemesanan.index', compact('data', 'no','user','nama_pemesan','produk','pemesanan','data2',$data));
     }
 
     /**
@@ -54,12 +54,20 @@ class PemesananController extends Controller
             return view('admin.index', compact('user','produk'));
         } elseif($auth->hasRole('user')){
             $jumlah = $request->jumlah_pemesanan;
-            $stok = Stok::find(['id_produk'=>$request->id_produk]);
-            foreach($stok as $row){
-                $total = $row->jumlah - $jumlah;
-                $row->update(['jumlah'=>$total]);
-                Pemesanan::create($request->all());
-                // dd($request);
+            $produk = Produk::where(['id' => $request->id_produk])->get()->all();
+            foreach($produk as $row){
+                $total = $row->stok - $jumlah;
+                $row->update(['stok'=>$total]);
+                Pemesanan::create([
+                    'id_pemesan' => $request->id_pemesan,
+                    'id_produk' => $request->id_produk,
+                    'nama_pemesan' => $request->nama_pemesan,
+                    'rasa' => $request->rasa,
+                    'harga' => $request->harga,
+                    'alamat' => $request->alamat,
+                    'no_hp' => $request->no_hp,
+                    'jumlah_pemesanan' => $request->jumlah_pemesanan,
+                ]);
                 Alert::success('Success', 'Pemsanan Berhasil');
                 return redirect()->route('home');
             }

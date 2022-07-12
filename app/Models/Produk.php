@@ -9,8 +9,4 @@ class Produk extends Model
 {
     use HasFactory;
     protected  $guarded =[];
-    public function stok()
-    {
-        return $this->belongsTo('App\Models\Stok', 'id_produk');
-    }
 }

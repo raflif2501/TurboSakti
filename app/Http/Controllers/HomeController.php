@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Produk;
-use App\Models\Stok;
 use App\Models\Pemesanan;
 
 
@@ -33,14 +32,12 @@ class HomeController extends Controller
         if($auth->hasRole('admin')){
             $user = User::count();
             $produk = Produk::count();
-            $stok = Stok::count();
             $pemesanan = Pemesanan::count();
-            $jumlah = Stok::sum('jumlah');
-            return view('admin.index', compact('user','produk','stok','pemesanan', 'jumlah'));
+            $stok = Produk::sum('stok');
+            return view('admin.index', compact('user','produk','pemesanan', 'stok'));
         } elseif($auth->hasRole('user')){
             $data = Produk::all();
-            $data1 = Stok::all();
-            return view('user.index', compact('data','data1'));
+            return view('user.index', compact('data'));
         }
     }
     public function home()

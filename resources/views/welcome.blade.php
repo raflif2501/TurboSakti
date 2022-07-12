@@ -153,7 +153,5 @@
     <script src="{{ asset('user') }}/js/main.js"></script>
 
 </body>
-
 <!--   03:22:07 GMT -->
-
 </html>

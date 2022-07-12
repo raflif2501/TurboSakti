@@ -12,7 +12,10 @@ class Pemesanan extends Model
     protected $table ='pemesanans';
     protected $primarykey ='id';
     protected $guarded = [];
-
+    protected $fillable = [
+        'id_pemesan','nama_pemesan','id_produk','rasa','harga','alamat','no_hp','jumlah_pemesanan'
+    ];
+    
     protected $with = ['product'];
 
     public function product()
