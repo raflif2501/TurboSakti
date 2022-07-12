@@ -18,14 +18,22 @@ class PemesananController extends Controller
      */
     public function index()
     {
-        $data = Pemesanan::all();
-        $data2 = User::all();
-        $no = 1;
-        $user = User::count();
-        $produk = Produk::count();
-        $nama_pemesan = nama_pemesan::count();
-        $pemesanan = Pemesanan::count();
-        return view('pemesanan.index', compact('data', 'no','user','nama_pemesan','produk','pemesanan','data2',$data));
+        $auth = auth()->user();
+
+        if($auth->hasRole('admin')){
+            $data = Pemesanan::all();
+            $data2 = User::all();
+            $no = 1;
+            $user = User::count();
+            $produk = Produk::count();
+            $pemesanan = Pemesanan::count();
+            return view('pemesanan.index', compact('data', 'no','user','produk','pemesanan','data2',$data));
+
+        } elseif($auth->hasRole('user')){
+        $data = Produk::all();
+        $pemesanan = Pemesanan::all();
+        return view('user.index', compact('data','pemesanan'));
+        }
     }
 
     /**

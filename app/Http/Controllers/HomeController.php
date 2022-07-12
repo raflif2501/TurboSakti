@@ -37,7 +37,9 @@ class HomeController extends Controller
             return view('admin.index', compact('user','produk','pemesanan', 'stok'));
         } elseif($auth->hasRole('user')){
             $data = Produk::all();
-            return view('user.index', compact('data'));
+            $data = Produk::all();
+            $pemesanan = Pemesanan::all();
+            return view('user.index', compact('data','pemesanan'));
         }
     }
     public function home()

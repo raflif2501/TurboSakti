@@ -47,9 +47,9 @@
                                             <img src="{{ asset('user') }}/img/user.png" alt="">
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <h5 class="uppercase">{{ auth()->user()->name }}</h5>
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf
+                                                <h5 class="uppercase">&emsp;{{ auth()->user()->name }}</h5>
                                                 <button type="submit" class="btn btn-transparant">
                                                     Logout</button>
                                                 <a class="bg-turbo"type="submit"></a>
@@ -63,30 +63,39 @@
                                     </a>
                                     <!--mini cart-->
                                     <div class="mini_cart">
-                                        <div class="cart_item">
-                                            <div class="cart_img">
-                                                <a href="#"><img
-                                                        src="{{ asset('user') }}/img/s-product/product.jpg"
-                                                        alt=""></a>
+                                        @foreach ($pemesanan as $p)
+                                            <div class="cart_item">
+                                                <div class="cart_img">
+                                                    <a href="#"><img
+                                                            src="{{ url('image/' . $p->product->gambar) }}"
+                                                            alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="cart_info">
+                                                    <a href="#">{{ $p->rasa }}</a>
+                                                    <p>Jumlah : {{ $p->jumlah_pemesanan }}<span>&emsp;&emsp;Harga :
+                                                            {{ $p->harga }} </span>
+                                                    </p>
+                                                    @php
+                                                        $total = $p->jumlah_pemesanan * $p->harga;
+                                                    @endphp
+                                                    <span>Subtotal : {{ str($total) }}</span>
+                                                </div>
+                                                {{-- <div class="cart_remove">
+                                                    <a href="#"><i class="ion-android-close"></i></a>
+                                                </div> --}}
                                             </div>
-                                            <div class="cart_info">
-                                                <a href="#">Sit voluptatem rhoncus sem lectus</a>
-                                                <p>Qty: 1 X <span> $60.00 </span></p>
-                                            </div>
-                                            <div class="cart_remove">
-                                                <a href="#"><i class="ion-android-close"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="mini_cart_table">
-                                            {{-- <div class="cart_total">
-                                                <span>Sub total:</span>
-                                                <span class="price">$138.00</span>
-                                            </div> --}}
+                                            @php
+                                                $semua = 0;
+                                                $semua += $total;
+                                            @endphp
+                                        @endforeach
+                                        {{-- <div class="mini_cart_table">
                                             <div class="cart_total mt-10">
-                                                <span>total:</span>
-                                                <span class="price">$138.00</span>
+                                                <span>Total:</span>
+                                                <span class="price">{{ str($semua) }}</span>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="mini_cart_footer">
                                             <div class="cart_button">
                                                 <a href="checkout.html">Checkout</a>
@@ -127,10 +136,10 @@
                             <a href="/detail/{{ $p->id }}">
                                 <div class="tranding-pro-img">
                                     <img src="{{ url('image/' . $p->gambar) }}" style="height: 300px; width:auto;">
+                                    <h5 class="uppercase">{{ $p->rasa }}</h5>
                                 </div>
-                                <div class="tranding-pro-title">
-                                    <h3>{{ $p->rasa }}</h3>
-                                </div>
+                                {{-- <div class="tranding-pro-title">
+                                </div> --}}
                                 <div class="tranding-pro-price">
                                     <div class="price_box">
                                         <span class="current_price">
