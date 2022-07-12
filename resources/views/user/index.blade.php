@@ -21,52 +21,79 @@
 
 <body>
     <header>
-        <div class="main_header table-responsive">
-            <!--header middel start-->
-            <div class="header_middle">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="col-lg-6 col-md-8">
-                                <div class="logo">
-                                    <a href="index-2.html">
-                                        <img src="{{ asset('img/logo.png') }}" alt="" width="60" height="60">
-                                    </a>
-                                </div>
-                            </div>
+        <div class="header_middle">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="logo">
+                            <img src="{{ asset('img/logo.png') }}" alt="" width="60" height="60">
                         </div>
-                        <div class="col-lg-9 col-md-6">
-                            <div class="pull-right">
-                                <div class="user">
+                    </div>
+                    <div class="col-lg-9 col-md-6">
+                        <div class="middel_right">
+                            <div class="search_container">
+                                <form action="#">
+                                    <div class="search_box" style="display: none;">
+                                        <input placeholder="Search product..." type="text">
+                                        <button type="submit">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="middel_right_info">
+                                <div class="header_wishlist">
                                     <div class="dropdown">
                                         <a class="ropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <h5 class="uppercase">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                                    <path fill-rule="evenodd"
-                                                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                                                </svg> &ensp;{{ auth()->user()->name }}
-                                            </h5>
+                                            <img src="{{ asset('user') }}/img/user.png" alt="">
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <h5 class="uppercase">{{ auth()->user()->name }}</h5>
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf
                                                 <button type="submit" class="btn btn-transparant">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                    height="16" fill="currentColor" class="bi bi-box-arrow-left"
-                                                    viewBox="0 0 16 16">
-                                                    <path fill-rule="evenodd"
-                                                    d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
-                                                    <path fill-rule="evenodd"
-                                                    d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
-                                                </svg>
-                                                &nbsp;Logout</button>
+                                                    Logout</button>
                                                 <a class="bg-turbo"type="submit"></a>
                                             </form>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="mini_cart_wrapper">
+                                    <a href="javascript:void(0)">
+                                        <img src="{{ asset('user') }}/img/shopping-bag.png" alt="">
+                                    </a>
+                                    <!--mini cart-->
+                                    <div class="mini_cart">
+                                        <div class="cart_item">
+                                            <div class="cart_img">
+                                                <a href="#"><img
+                                                        src="{{ asset('user') }}/img/s-product/product.jpg"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="cart_info">
+                                                <a href="#">Sit voluptatem rhoncus sem lectus</a>
+                                                <p>Qty: 1 X <span> $60.00 </span></p>
+                                            </div>
+                                            <div class="cart_remove">
+                                                <a href="#"><i class="ion-android-close"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="mini_cart_table">
+                                            {{-- <div class="cart_total">
+                                                <span>Sub total:</span>
+                                                <span class="price">$138.00</span>
+                                            </div> --}}
+                                            <div class="cart_total mt-10">
+                                                <span>total:</span>
+                                                <span class="price">$138.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="mini_cart_footer">
+                                            <div class="cart_button">
+                                                <a href="checkout.html">Checkout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--mini cart end-->
                                 </div>
                             </div>
                         </div>
@@ -74,7 +101,6 @@
                 </div>
             </div>
         </div>
-        
     </header>
     <!--header area end-->
     <!--Tranding product-->
@@ -89,8 +115,9 @@
             </div>
             <div class="row justify-content-center">
                 @php
-                    function str($rupiah){
-                        $rp = "Rp " . number_format($rupiah,2,',','.');
+                    function str($rupiah)
+                    {
+                        $rp = 'Rp ' . number_format($rupiah, 2, ',', '.');
                         return $rp;
                     }
                 @endphp
@@ -99,7 +126,7 @@
                         <div class="single-tranding">
                             <a href="/detail/{{ $p->id }}">
                                 <div class="tranding-pro-img">
-                                    <img src="{{ url('image/' . $p->gambar) }}" width="100" height="100">
+                                    <img src="{{ url('image/' . $p->gambar) }}" style="height: 300px; width:auto;">
                                 </div>
                                 <div class="tranding-pro-title">
                                     <h3>{{ $p->rasa }}</h3>
@@ -146,9 +173,12 @@
                             <h3>Follow Kami</h3>
                             <div class="footer_social_link">
                                 <ul>
-                                    <li><a class="facebook" href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a class="twitter" href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a class="instagram" href="#" title="instagram"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a class="facebook" href="#" title="Facebook"><i
+                                                class="fa fa-facebook"></i></a></li>
+                                    <li><a class="twitter" href="#" title="Twitter"><i
+                                                class="fa fa-twitter"></i></a></li>
+                                    <li><a class="instagram" href="#" title="instagram"><i
+                                                class="fa fa-instagram"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -175,4 +205,5 @@
     <!-- Main JS -->
     <script src="{{ asset('user') }}/js/main.js"></script>
 </body>
+
 </html>
