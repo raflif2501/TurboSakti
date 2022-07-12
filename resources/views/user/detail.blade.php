@@ -164,9 +164,9 @@
                                 placeholder="Masukkan No HP">
                             <div class="product_variant quantity">
                                 <label>Jumlah</label>
-                                <input min="1" max="{{ $p->jumlah }}" value="1" type="number"
-                                    name="jumlah_pemesanan">
+                                <input min="1" value="1" type="number" name="jumlah_pemesanan">
                                 <button class="button" type="submit">Pesan Sekarang</button>
+                                {{-- max="{{ $p->jumlah }}" --}}
                             </div>
                             {{-- <input type="number" class="form-control mb-3"name="total_harga"
                                 value="{{ $p->harga_jual * $p->jumlah_pemesanan }}"> --}}
