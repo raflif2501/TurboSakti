@@ -21,5 +21,6 @@ class Pemesanan extends Model
     public function product()
     {
         return $this->belongsTo('App\Models\Produk', 'id_produk');
+        return Pemesanan::parse($this->attribute['created_at'])->translationFormat('1, d F Y');
     }
 }

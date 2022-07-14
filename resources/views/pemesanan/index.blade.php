@@ -33,7 +33,6 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $data2->where('id', $p->id_pemesan)->first()->name }}</td>
-                                <td>{{ $p->nama_pemesan }}</td>
                                 <td>{{ $p->alamat }}</td>
                                 <td>{{ $p->no_hp }}</td>
                                 <td>{{ $p->created_at }}</td>

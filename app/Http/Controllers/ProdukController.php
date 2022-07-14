@@ -125,6 +125,7 @@ class ProdukController extends Controller
         ]);
 
         $data = Produk::findOrFail($id);
+        
 
         if($request->file('gambar') == "") {
             $data->update([
@@ -135,10 +136,8 @@ class ProdukController extends Controller
 
         } else {
 
-            //hapus old image
             Storage::disk('local')->delete('image/'.$data->image);
 
-            //upload new image
             $image = $request->file('gambar');
             $name = time().'.'.$image->getClientOriginalExtension();
             $image->move(public_path('image'),$name);
@@ -152,17 +151,12 @@ class ProdukController extends Controller
         }
 
         if($data){
-            //redirect dengan pesan sukses
             Alert::success('Success', 'Data Berhasil Dirubah');
             return redirect()->route('produk.index');
         }else{
-        //redirect dengan pesan error
             Alert::error('Gagal', 'Data Gagal Dirubah');
             return redirect()->route('produk.index');
         }
-        // $data = Produk::find($id);
-        // $data->update($request->all());
-        // $produk = Produk::count();
     }
 
     /**
@@ -178,10 +172,9 @@ class ProdukController extends Controller
         return back()->with('success', 'Data sudah di hapus');
     }
     public function detail($id){
-        // $data = Produk::find($id);
+
         $p = Produk::find($id);
-        // $data = DB::table('produks')->where('id', $id)->get();
-        // dd($data);
+
         return view('user.detail',compact('p', $p));
     }
 }

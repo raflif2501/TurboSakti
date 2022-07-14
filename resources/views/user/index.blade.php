@@ -66,10 +66,7 @@
                                         @foreach ($pemesanan as $p)
                                             <div class="cart_item">
                                                 <div class="cart_img">
-                                                    <a href="#"><img
-                                                            src="{{ url('image/' . $p->product->gambar) }}"
-                                                            alt="">
-                                                    </a>
+                                                    <a href="#"><img src="{{ url('image/' . $p->product->gambar) }}" alt=""></a>
                                                 </div>
                                                 <div class="cart_info">
                                                     <a href="#">{{ $p->rasa }}</a>
@@ -81,9 +78,9 @@
                                                     @endphp
                                                     <span>Subtotal : {{ str($total) }}</span>
                                                 </div>
-                                                {{-- <div class="cart_remove">
+                                                <div class="cart_remove">
                                                     <a href="#"><i class="ion-android-close"></i></a>
-                                                </div> --}}
+                                                </div>
                                             </div>
                                             @php
                                                 $semua = 0;
@@ -182,14 +179,21 @@
                             <h3>Follow Kami</h3>
                             <div class="footer_social_link">
                                 <ul>
-                                    <li><a class="facebook" href="#" title="Facebook"><i
-                                                class="fa fa-facebook"></i></a></li>
-                                    <li><a class="twitter" href="#" title="Twitter"><i
-                                                class="fa fa-twitter"></i></a></li>
-                                    <li><a class="instagram" href="#" title="instagram"><i
-                                                class="fa fa-instagram"></i></a></li>
+                                    <li><a class="facebook" href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a class="twitter" href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a class="instagram" href="#" title="instagram"><i class="fa fa-instagram"></i></a></li>
                                 </ul>
                             </div>
+                        </div>
+                    </div>
+                    <div class="widgets_container newsletter">
+                        <h3>Hubungi Kami</h3>
+                        <div class="footer_social_link">
+                            <ul>
+                                <li><a class="facebook" href="#" title="Whatsapp"><i class="fa fa-whatsapp"></i></a></li>
+                                <li><a class="twitter" href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="instagram" href="#" title="instagram"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>

@@ -37,14 +37,5 @@ class UserPelangganSeeder extends Seeder
          $admin->assignRole('admin');
 
          $this->command->info('Admin telah diisi!');
-
-        $admin1 = User::create(array(
-        'name' => 'Firdaus',
-        'email' => 'daus@gmail.com',
-        'password' => bcrypt('daus')
-        ));
-        $admin1->assignRole('admin');
-
-        $this->command->info('Admin telah diisi!');
     }
 }

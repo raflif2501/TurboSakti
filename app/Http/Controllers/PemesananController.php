@@ -125,6 +125,8 @@ class PemesananController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Pemesanan::find($id);
+        $data->delete();
+        return back()->with('success', 'Data sudah di hapus');
     }
 }
