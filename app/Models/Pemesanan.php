@@ -13,14 +13,19 @@ class Pemesanan extends Model
     protected $primarykey ='id';
     protected $guarded = [];
     protected $fillable = [
-        'id_pemesan','nama_pemesan','id_produk','rasa','harga','alamat','no_hp','jumlah_pemesanan'
+        'id_pemesan','id_produk','id_rasa','harga','alamat','no_hp','jumlah_pemesanan'
     ];
     
-    protected $with = ['product'];
+    protected $with = ['product', 'user'];
 
     public function product()
     {
         return $this->belongsTo('App\Models\Produk', 'id_produk');
         return Pemesanan::parse($this->attribute['created_at'])->translationFormat('1, d F Y');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'id_pemesan');
     }
 }

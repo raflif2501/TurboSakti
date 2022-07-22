@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Pemesanan;
 
 class PembayaranController extends Controller
 {
@@ -21,21 +23,23 @@ class PembayaranController extends Controller
         // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
         
-        $params = array(
-            'transaction_details' => array(
-                'order_id' => rand(),
-                'gross_amount' => 10000,
-            ),
-            'customer_details' => array(
-                'first_name' => 'Wahyu',
-                'last_name' => 'Aditya',
-                'email' => 'wahyu@gmail.com',
-                'phone' => '085330276771',
-            ),
-        );
+        $id = auth()->user()->id;
+        $pemesanan = Pemesanan::where(['id_pemesan'=>$id])->get()->all();
+        foreach ($pemesanan as $row){
+            $params = array(
+                'transaction_details' => array(
+                    'order_id' => rand(),
+                ),
+                'customer_details' => array(
+                    'first_name' => $row->user->name,
+                    'email' => $row->user->email,
+                    'phone' => $row->no_hp,
+                ),
+                'item_details' =>array()
+            );
+            return view('pembayaran.index', compact('params','pemesanan'));
+        }
         
-        $snapToken = \Midtrans\Snap::getSnapToken($params);
-        return view('pembayaran.index', compact('snapToken'));
     }
 
     /**
@@ -101,6 +105,8 @@ class PembayaranController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pemesanan = Pemesanan::find($id);
+        $pemesanan->delete();
+        return redirect('home');
     }
 }

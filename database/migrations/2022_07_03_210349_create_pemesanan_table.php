@@ -16,9 +16,7 @@ class CreatePemesananTable extends Migration
         Schema::create('pemesanans', function (Blueprint $table) {
             $table->id('id');
             $table->string('id_pemesan');
-            $table->string('nama_pemesan');
             $table->foreignId('id_produk')->constrained('produks');
-            $table->string('rasa');
             $table->string('harga');
             $table->string('alamat');
             $table->string('no_hp');

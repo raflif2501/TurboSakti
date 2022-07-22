@@ -71,15 +71,11 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
                             Produk
                         </a>
-                        <!-- <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-money-check"></i></div>
-                            Rekap Keuangan
-                        </a> -->
                         <a class="nav-link" href="{{ route('pemesanan.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
                             Pemesanan
                         </a>
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{ route('pembayaran.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-money-check-dollar"></i></div>
                             Pembayaran
                         </a>

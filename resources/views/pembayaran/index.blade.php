@@ -9,6 +9,18 @@
   </head>
  
   <body>
+    @php
+      foreach($pemesanan as $row)
+      {
+          $params['item_details'][] = array (  
+              'id' => $row->id,
+              'price' => $row->harga,
+              'quantity' => $row->jumlah_pemesanan,
+              'name' => $row->product->rasa
+          );
+      }
+      $snapToken = \Midtrans\Snap::getSnapToken($params);
+    @endphp
     <button id="pay-button">Pay!</button>
  
     <script type="text/javascript">

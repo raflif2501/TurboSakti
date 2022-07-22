@@ -19,7 +19,6 @@ class PemesananController extends Controller
     public function index()
     {
         $auth = auth()->user();
-
         if($auth->hasRole('admin')){
             $data = Pemesanan::all();
             $data2 = User::all();
@@ -31,7 +30,7 @@ class PemesananController extends Controller
 
         } elseif($auth->hasRole('user')){
         $data = Produk::all();
-        $pemesanan = Pemesanan::all();
+        $pemesanan = Pemesanan::find();
         return view('user.index', compact('data','pemesanan'));
         }
     }
@@ -69,14 +68,12 @@ class PemesananController extends Controller
                 Pemesanan::create([
                     'id_pemesan' => $request->id_pemesan,
                     'id_produk' => $request->id_produk,
-                    'nama_pemesan' => $request->nama_pemesan,
-                    'rasa' => $request->rasa,
                     'harga' => $request->harga,
                     'alamat' => $request->alamat,
                     'no_hp' => $request->no_hp,
                     'jumlah_pemesanan' => $request->jumlah_pemesanan,
                 ]);
-                Alert::success('Success', 'Pemsanan Berhasil');
+                Alert::success('Success', 'Pemesanan Berhasil');
                 return redirect()->route('home');
             }
         }

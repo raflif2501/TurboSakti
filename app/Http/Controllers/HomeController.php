@@ -28,7 +28,6 @@ class HomeController extends Controller
     public function index()
     {
         $auth = auth()->user();
-
         if($auth->hasRole('admin')){
             $user = User::count();
             $produk = Produk::count();
@@ -39,7 +38,9 @@ class HomeController extends Controller
             $data = Produk::all();
             $data = Produk::all();
             $pemesanan = Pemesanan::all();
-            return view('user.index', compact('data','pemesanan'));
+            $id = $auth->id;
+            $user = Pemesanan::where(['id_pemesan'=>$id])->get()->all();
+            return view('user.index', compact('data','pemesanan', 'user'));
         }
     }
     public function home()
