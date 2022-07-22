@@ -21,7 +21,7 @@
       }
       $snapToken = \Midtrans\Snap::getSnapToken($params);
     @endphp
-    <button id="pay-button">Pay!</button>
+    <h3><button id="pay-button">Bayar!</button></h3>
  
     <script type="text/javascript">
       // For example trigger on button clicked, or any time you need
