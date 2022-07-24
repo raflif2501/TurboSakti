@@ -26,6 +26,10 @@
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         </form>
         <!-- Navbar-->
+        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-bell fa-fw"></i>
+            <!-- Counter - Alerts -->
+            <span class="badge badge-danger badge-counter"></span>
+        </a>
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
@@ -68,7 +72,7 @@
                         </a>
                         
                         <a class="nav-link" href="{{ route('produk.index') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-store"></i></div>
                             Produk
                         </a>
                         <a class="nav-link" href="{{ route('pemesanan.index') }}">
@@ -116,5 +120,4 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="{{ asset('admin') }}/js/datatables-simple-demo.js"></script>
 </body>
-
 </html>
